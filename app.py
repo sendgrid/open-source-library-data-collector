@@ -1,4 +1,6 @@
 import os
+import datetime
+import re
 
 import github3
 import requests
@@ -29,6 +31,7 @@ num_watchers = sendgrid_python.watchers
 num_stargazers = sendgrid_python.stargazers
 num_forks = sendgrid_python.forks_count
 
+#### CSharp Downloads
 url = "https://www.nuget.org/packages/SendGrid"
 r = requests.get(url)
 soup = BeautifulSoup(r.text, "html.parser")
@@ -36,8 +39,8 @@ mydivs = soup.findAll("p", { "class" : "stat-number" })
 nodes = []
 for node in mydivs:
    nodes.append(''.join(node.findAll(text=True)))
-num_total_csharp_downloads = nodes[0]
-num_total_csharp_v_downloads = nodes[1]
+num_total_csharp_downloads = nodes[0].replace(',', '')
+num_total_csharp_v_downloads = nodes[1].replace(',', '')
 
 mydivs = soup.findAll("p", { "class" : "stat-label" })
 nodes = []
@@ -45,7 +48,48 @@ for node in mydivs:
    nodes.append(''.join(node.findAll(text=True)))
 num_v_downloads_label = nodes[1]
 
-print "Pull Requests, " + \
+### Node.js Downloads
+url = "https://www.npmjs.com/package/sendgrid"
+r = requests.get(url)
+soup = BeautifulSoup(r.text, "html.parser")
+mydivs = soup.findAll("strong", { "class" : "pretty-number monthly-downloads" })
+nodes = []
+for node in mydivs:
+   nodes.append(''.join(node.findAll(text=True)))
+num_nodejs_monthly_downloads = nodes[0].replace(',', '')
+
+### PHP Downloads
+url = "https://packagist.org/packages/sendgrid/sendgrid"
+r = requests.get(url)
+soup = BeautifulSoup(r.text, "html.parser")
+mydivs = soup.findAll("div", { "class" : "facts col-xs-12 col-sm-6 col-md-12" })
+nodes = []
+for node in mydivs:
+   nodes.append(''.join(node.findAll(text=True)))
+num_php_downloads = nodes[0][11:].replace(u'\u2009', '')
+
+### Python Downloads
+url = "https://pypi.python.org/pypi/sendgrid"
+r = requests.get(url)
+soup = BeautifulSoup(r.text, "html.parser")
+mydivs = soup.findAll("ul", { "class" : "nodot" })
+nodes = []
+for node in mydivs:
+   nodes.append(''.join(node.findAll(text=True)))
+num_python_downloads = nodes[0].replace(u'\n', '').rpartition('week')[-1].rpartition('downloads')[0][2:].replace(u'\u2009', '')
+
+### Ruby Downloads
+url = "https://rubygems.org/gems/sendgrid-ruby"
+r = requests.get(url)
+soup = BeautifulSoup(r.text, "html.parser")
+mydivs = soup.findAll("span", { "class" : "gem__downloads" })
+nodes = []
+for node in mydivs:
+   nodes.append(''.join(node.findAll(text=True)))
+num_ruby_downloads = nodes[0].replace(',', '')
+   
+print "Date Updated, " + \
+      "Pull Requests, " + \
       "Open Issues, " + \
       "Number of Commits, " + \
       "Number of Branches, " + \
@@ -54,9 +98,14 @@ print "Pull Requests, " + \
       "Number of Watchers, " + \
       "Number of Stargazers, " + \
       "Number of Forks, " + \
-      "Total C# Downloads - Nuget, " + \
-      num_v_downloads_label[13:] + " Downloads - Nuget"
-print      str(num_pull_requests) + \
+      "Total CSharp Downloads - Nuget, " + \
+      num_v_downloads_label[13:] + " CSharp Downloads - Nuget, " + \
+      "Total Node.js Monthly Downloads, " + \
+      "Total PHP Monthly Downloads, " + \
+      "Total Python Monthly Downloads, " + \
+      "Total Ruby Downloads"
+print      str(datetime.date.today()) + \
+    ", " + str(num_pull_requests) + \
     ", " + str(num_issues) + \
     ", " + str(num_commits) + \
     ", " + str(num_branches) + \
@@ -66,4 +115,8 @@ print      str(num_pull_requests) + \
     ", " + str(num_stargazers) + \
     ", " + str(num_forks) + \
     ", " + str(num_total_csharp_downloads) + \
-    ", " + str(num_total_csharp_v_downloads)
+    ", " + str(num_total_csharp_v_downloads) + \
+    ", " + str(num_nodejs_monthly_downloads) + \
+    ", " + str(num_php_downloads) + \
+    ", " + str(num_python_downloads) + \
+    ", " + str(num_ruby_downloads)
