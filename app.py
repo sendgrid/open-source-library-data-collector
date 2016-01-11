@@ -169,7 +169,7 @@ lib_data += get_lib_data("Go SMTPAPI", go_smtpapi_data)
 if (os.environ.get('ENV') != 'prod'):
     sg = sendgrid.SendGridClient(os.environ.get('SENDGRID_API_KEY'))
 else:
-    sg = sendgrid.SendGridClient(os.environ['SENDGRID_API_KEY']
+    sg = sendgrid.SendGridClient(os.environ['SENDGRID_API_KEY'])
 
 message = sendgrid.Mail()
 message.add_to('DX Team <dx@sendgrid.com>')
