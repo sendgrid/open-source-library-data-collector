@@ -47,6 +47,7 @@ ruby_data = get_library_data("sendgrid-ruby")
 ruby_smtpapi_data = get_library_data("smtpapi-ruby")
 go_data = get_library_data("sendgrid-go")
 go_smtpapi_data = get_library_data("smtpapi-go")
+docs_data = get_library_data("docs")
 
 #### CSharp Downloads
 url = "https://www.nuget.org/packages/SendGrid"
@@ -164,7 +165,8 @@ lib_data += get_lib_data("PHP SMTPAPI", php_smtpapi_data) + "\n"
 lib_data += get_lib_data("Ruby", ruby_data) + "\n"
 lib_data += get_lib_data("Ruby SMTPAPI", ruby_smtpapi_data) + "\n"
 lib_data += get_lib_data("Go", go_data) + "\n"
-lib_data += get_lib_data("Go SMTPAPI", go_smtpapi_data)
+lib_data += get_lib_data("Go SMTPAPI", go_smtpapi_data) + "\n"
+lib_data += get_lib_data("Documentation", docs_data)
 
 if (os.environ.get('ENV') != 'prod'):
     sg = sendgrid.SendGridClient(os.environ.get('SENDGRID_API_KEY'))
