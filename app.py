@@ -148,7 +148,7 @@ package_header = "Date Updated, " + \
       "Total Node.js Monthly Downloads, " + \
       "Total PHP Monthly Downloads, " + \
       "Total Python Monthly Downloads, " + \
-      "Total Ruby Downloads" + \
+      "Total Ruby Downloads," + \
       "Totoal daily Java Downloads"
 
 def get_package_data():
