@@ -106,7 +106,17 @@ nodes = []
 for node in mydivs:
    nodes.append(''.join(node.findAll(text=True)))
 num_ruby_downloads = nodes[0].replace(',', '')
-   
+
+### Java Downloads
+url = "http://mvnrepository.com/artifact/com.sendgrid/sendgrid-java"
+r = requests.get(url)
+soup = BeautifulSoup(r.text, "html.parser")
+mydivs = soup.findAll("a", { "class" : "im-usage" })
+nodes = []
+for node in mydivs:
+   nodes.append(''.join(node.findAll(text=True)))
+num_java_downloads = nodes[0].split(' ')[0]
+
 lib_header = "Date Updated, " + \
       "Language, " + \
       "Pull Requests, " + \
@@ -138,7 +148,8 @@ package_header = "Date Updated, " + \
       "Total Node.js Monthly Downloads, " + \
       "Total PHP Monthly Downloads, " + \
       "Total Python Monthly Downloads, " + \
-      "Total Ruby Downloads"
+      "Total Ruby Downloads" + \
+      "Totoal daily Java Downloads"
 
 def get_package_data():
     return str(datetime.date.today()) + \
@@ -147,7 +158,8 @@ def get_package_data():
     ", " + str(num_nodejs_monthly_downloads) + \
     ", " + str(num_php_downloads) + \
     ", " + str(num_python_downloads) + \
-    ", " + str(num_ruby_downloads)
+    ", " + str(num_ruby_downloads) + \
+    ", " + str(num_java_downloads)
 
 package_data = package_header + "\n"
 package_data += get_package_data()
