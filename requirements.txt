@@ -2,3 +2,8 @@ github3.py
 requests
 beautifulsoup4
 sendgrid
+python-dateutil
+logging
+sqlalchemy
+pymysql
+datetime

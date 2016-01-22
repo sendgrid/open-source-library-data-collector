@@ -6,6 +6,7 @@ import github3
 import requests
 from bs4 import BeautifulSoup
 import sendgrid
+from db_connector import *
 
 if os.path.exists('/Users/thinkingserious/Workspace/sendgrid-open-source-library-external-data/.env'):
     for line in open('/Users/thinkingserious/Workspace/sendgrid-open-source-library-external-data/.env'):
@@ -19,6 +20,7 @@ else:
     github_token = os.environ['GITHUB_TOKEN']
 
 github = github3.login(token=github_token)
+db = DBConnector()
 
 def get_library_data(repo_name):
     sendgrid_library_data = github.repository("sendgrid", repo_name)
@@ -32,6 +34,20 @@ def get_library_data(repo_name):
     lib_data['num_watchers'] = sum(1 for i in sendgrid_library_data.iter_subscribers())
     lib_data['num_stargazers'] = sum(1 for i in sendgrid_library_data.iter_stargazers())
     lib_data['num_forks'] = sendgrid_library_data.forks_count
+    githubdata = GitHubData(
+                            date_updated=datetime.datetime.now(),
+                            language=repo_name,
+                            pull_requests=lib_data['num_pull_requests'],
+                            open_issues=lib_data['num_issues'],
+                            number_of_commits=lib_data['num_commits'],
+                            number_of_branches=lib_data['num_branches'],
+                            number_of_releases=lib_data['num_releases'],
+                            number_of_contributors=lib_data['num_contributors'],
+                            number_of_watchers=lib_data['num_watchers'],
+                            number_of_stargazers=lib_data['num_stargazers'],
+                            number_of_forks=lib_data['num_forks']
+                            )
+    db.add_data(githubdata)
     return lib_data
     
 csharp_data = get_library_data("sendgrid-csharp")
@@ -148,8 +164,7 @@ package_header = "Date Updated, " + \
       "Total Node.js Monthly Downloads, " + \
       "Total PHP Monthly Downloads, " + \
       "Total Python Monthly Downloads, " + \
-      "Total Ruby Downloads," + \
-      "Totoal daily Java Downloads"
+      "Total Ruby Downloads"
 
 def get_package_data():
     return str(datetime.date.today()) + \
@@ -158,8 +173,17 @@ def get_package_data():
     ", " + str(num_nodejs_monthly_downloads) + \
     ", " + str(num_php_downloads) + \
     ", " + str(num_python_downloads) + \
-    ", " + str(num_ruby_downloads) + \
-    ", " + str(num_java_downloads)
+    ", " + str(num_ruby_downloads)
+    
+packagedata = PackageManagerData(
+                        date_updated=datetime.datetime.now(),
+                        csharp_downloads=num_total_csharp_downloads,
+                        nodejs_downloads=num_nodejs_monthly_downloads,
+                        php_downloads=num_php_downloads,
+                        python_downloads=num_python_downloads,
+                        ruby_downloads=num_ruby_downloads
+                        )
+db.add_data(packagedata)
 
 package_data = package_header + "\n"
 package_data += get_package_data()
@@ -185,8 +209,9 @@ if (os.environ.get('ENV') != 'prod'):
 else:
     sg = sendgrid.SendGridClient(os.environ['SENDGRID_API_KEY'])
 
+to_email = 'Elmer Thomas <elmer.thomas@sendgrid.com>'
 message = sendgrid.Mail()
-message.add_to('DX Team <dx@sendgrid.com>')
+message.add_to(to_email)
 message.set_subject(str(datetime.date.today()) + ' - Package Manager Open Source Download Data [Automated]')
 message.set_text('Please see the attached .csv file.')
 message.set_html('Please see the attached .csv file.')
@@ -195,7 +220,7 @@ message.set_from('DX Team <dx@sendgrid.com>')
 status, msg = sg.send(message)
 
 message2 = sendgrid.Mail()
-message2.add_to('DX Team <dx@sendgrid.com>')
+message2.add_to(to_email)
 message2.set_subject(str(datetime.date.today()) + ' - GitHub Open Source Data [Automated]')
 message2.set_text('Please see the attached .csv file.')
 message2.set_html('Please see the attached .csv file.')
