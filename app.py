@@ -48,22 +48,22 @@ def get_library_data(repo_name):
                             number_of_forks=lib_data['num_forks']
                             )
     db.add_data(githubdata)
-    return lib_data
+    return
     
-csharp_data = get_library_data("sendgrid-csharp")
-csharp_smtpapi_data = get_library_data("smtpapi-csharp")
-python_data = get_library_data("sendgrid-python")
-python_smtpapi_data = get_library_data("smtpapi-python")
-nodejs_data = get_library_data("sendgrid-nodejs")
-nodejs_smtpapi_data = get_library_data("smtpapi-nodejs")
-nodejs_mailer_data = get_library_data("nodemailer-sendgrid-transport")
-php_data = get_library_data("sendgrid-php")
-php_smtpapi_data = get_library_data("smtpapi-php")
-ruby_data = get_library_data("sendgrid-ruby")
-ruby_smtpapi_data = get_library_data("smtpapi-ruby")
-go_data = get_library_data("sendgrid-go")
-go_smtpapi_data = get_library_data("smtpapi-go")
-docs_data = get_library_data("docs")
+get_library_data("sendgrid-csharp")
+get_library_data("smtpapi-csharp")
+get_library_data("sendgrid-python")
+get_library_data("smtpapi-python")
+get_library_data("sendgrid-nodejs")
+get_library_data("smtpapi-nodejs")
+get_library_data("nodemailer-sendgrid-transport")
+get_library_data("sendgrid-php")
+get_library_data("smtpapi-php")
+get_library_data("sendgrid-ruby")
+get_library_data("smtpapi-ruby")
+get_library_data("sendgrid-go")
+get_library_data("smtpapi-go")
+get_library_data("docs")
 
 #### CSharp Downloads
 url = "https://www.nuget.org/packages/SendGrid"
@@ -133,48 +133,6 @@ for node in mydivs:
    nodes.append(''.join(node.findAll(text=True)))
 num_java_downloads = nodes[0].split(' ')[0]
 
-lib_header = "Date Updated, " + \
-      "Language, " + \
-      "Pull Requests, " + \
-      "Open Issues, " + \
-      "Number of Commits, " + \
-      "Number of Branches, " + \
-      "Number of Releases, " + \
-      "Number of Contributors, " + \
-      "Number of Watchers, " + \
-      "Number of Stargazers, " + \
-      "Number of Forks"
-
-def get_lib_data(repo_name, lib_data):
-    return str(datetime.date.today()) + \
-      ", " + str(repo_name) + \
-      ", " + str(lib_data['num_pull_requests']) + \
-      ", " + str(lib_data['num_issues'] - lib_data['num_pull_requests']) + \
-      ", " + str(lib_data['num_commits']) + \
-      ", " + str(lib_data['num_branches']) + \
-      ", " + str(lib_data['num_releases']) + \
-      ", " + str(lib_data['num_contributors']) + \
-      ", " + str(lib_data['num_watchers'] + 1) + \
-      ", " + str(lib_data['num_stargazers']) + \
-      ", " + str(lib_data['num_forks'])
-
-package_header = "Date Updated, " + \
-      "Total CSharp Downloads - Nuget, " + \
-      num_v_downloads_label[13:] + " CSharp Downloads - Nuget, " + \
-      "Total Node.js Monthly Downloads, " + \
-      "Total PHP Monthly Downloads, " + \
-      "Total Python Monthly Downloads, " + \
-      "Total Ruby Downloads"
-
-def get_package_data():
-    return str(datetime.date.today()) + \
-    ", " + str(num_total_csharp_downloads) + \
-    ", " + str(num_total_csharp_v_downloads) + \
-    ", " + str(num_nodejs_monthly_downloads) + \
-    ", " + str(num_php_downloads) + \
-    ", " + str(num_python_downloads) + \
-    ", " + str(num_ruby_downloads)
-    
 packagedata = PackageManagerData(
                         date_updated=datetime.datetime.now(),
                         csharp_downloads=num_total_csharp_downloads,
@@ -185,45 +143,16 @@ packagedata = PackageManagerData(
                         )
 db.add_data(packagedata)
 
-package_data = package_header + "\n"
-package_data += get_package_data()
-
-lib_data = lib_header + "\n"
-lib_data += get_lib_data("CSharp", csharp_data) + "\n"
-lib_data += get_lib_data("CSharp SMTPAPI", csharp_smtpapi_data) + "\n"
-lib_data += get_lib_data("Python", python_data) + "\n"
-lib_data += get_lib_data("Python SMTPAPI", python_smtpapi_data) + "\n"
-lib_data += get_lib_data("Nodejs", nodejs_data) + "\n"
-lib_data += get_lib_data("Nodejs SMTPAPI", nodejs_smtpapi_data) + "\n"
-lib_data += get_lib_data("Nodemailer SendGrid Transport", nodejs_mailer_data) + "\n"
-lib_data += get_lib_data("PHP", php_data) + "\n"
-lib_data += get_lib_data("PHP SMTPAPI", php_smtpapi_data) + "\n"
-lib_data += get_lib_data("Ruby", ruby_data) + "\n"
-lib_data += get_lib_data("Ruby SMTPAPI", ruby_smtpapi_data) + "\n"
-lib_data += get_lib_data("Go", go_data) + "\n"
-lib_data += get_lib_data("Go SMTPAPI", go_smtpapi_data) + "\n"
-lib_data += get_lib_data("Documentation", docs_data)
-
 if (os.environ.get('ENV') != 'prod'):
     sg = sendgrid.SendGridClient(os.environ.get('SENDGRID_API_KEY'))
 else:
     sg = sendgrid.SendGridClient(os.environ['SENDGRID_API_KEY'])
 
-to_email = 'Elmer Thomas <elmer.thomas@sendgrid.com>'
+to_email = 'DX Team <dx@sendgrid.com>'
 message = sendgrid.Mail()
 message.add_to(to_email)
-message.set_subject(str(datetime.date.today()) + ' - Package Manager Open Source Download Data [Automated]')
-message.set_text('Please see the attached .csv file.')
-message.set_html('Please see the attached .csv file.')
-message.add_attachment_stream(str(datetime.date.today()) + '_sendgrid_package_data.csv', package_data)
+message.set_subject(str(datetime.date.today()) + ' - Package Manager Open Source Downloads and GitHub Data Updated [Automated]')
+message.set_text('Data logged to DB on Heroku.')
+message.set_html('Data logged to DB on Heroku.')
 message.set_from('DX Team <dx@sendgrid.com>')
 status, msg = sg.send(message)
-
-message2 = sendgrid.Mail()
-message2.add_to(to_email)
-message2.set_subject(str(datetime.date.today()) + ' - GitHub Open Source Data [Automated]')
-message2.set_text('Please see the attached .csv file.')
-message2.set_html('Please see the attached .csv file.')
-message2.add_attachment_stream(str(datetime.date.today()) + '_sendgrid_github_data.csv', lib_data)
-message2.set_from('DX Team <dx@sendgrid.com>')
-status, msg = sg.send(message2)
