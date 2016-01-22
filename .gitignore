@@ -59,3 +59,4 @@ target/
 venv/
 activate/
 .env
+csv/

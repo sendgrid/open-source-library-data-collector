@@ -63,6 +63,8 @@ get_library_data("sendgrid-ruby")
 get_library_data("smtpapi-ruby")
 get_library_data("sendgrid-go")
 get_library_data("smtpapi-go")
+get_library_data("sendgrid-java")
+get_library_data("smtpapi-java")
 get_library_data("docs")
 
 #### CSharp Downloads
