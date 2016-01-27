@@ -12,7 +12,7 @@ CREATE TABLE `github_data` (
   `number_of_stargazers` int(11) unsigned DEFAULT NULL,
   `number_of_forks` int(11) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 CREATE TABLE `package_manager_data` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -22,5 +22,6 @@ CREATE TABLE `package_manager_data` (
   `php_downloads` int(11) unsigned DEFAULT NULL,
   `python_downloads` int(11) unsigned DEFAULT NULL,
   `ruby_downloads` int(11) unsigned DEFAULT NULL,
+  `java_downloads` int(11) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
