@@ -3,6 +3,8 @@
 ## Initial setup: ##
 
 ```
+git clone https://github.com/sendgrid/sendgrid-open-source-library-external-data.git
+cd sendgrid-open-source-library-external-data
 virtualenv venv
 cp .env_sample .env
 ```
