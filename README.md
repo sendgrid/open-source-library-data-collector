@@ -2,9 +2,9 @@
 
 ## Prerequisites ##
 
-[Homebrew](http://brew.sh/)
-[Python 2.7.10](https://www.python.org/)
-[virtualenv](https://pypi.python.org/pypi/virtualenv)
+* [Homebrew](http://brew.sh/)
+* [Python 2.7.10](https://www.python.org/)
+* [virtualenv](https://pypi.python.org/pypi/virtualenv)
 
 ## Initial setup: ##
 
