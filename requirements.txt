@@ -7,3 +7,4 @@ logging
 sqlalchemy
 pymysql
 datetime
+pyyaml

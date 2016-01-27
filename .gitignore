@@ -59,4 +59,5 @@ target/
 venv/
 activate/
 .env
+.config
 csv/

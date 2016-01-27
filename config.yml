@@ -1,0 +1,37 @@
+# The GitHub user that owns the repos you want to examine
+github_user:
+ - sendgrid
+
+# List all the repos for which you want to obtain data
+github_repos:
+ - sendgrid-csharp
+ - smtpapi-csharp
+ - sendgrid-python
+ - smtpapi-python
+ - sendgrid-nodejs
+ - smtpapi-nodejs
+ - nodemailer-sendgrid-transport
+ - sendgrid-php
+ - smtpapi-php
+ - sendgrid-ruby
+ - smtpapi-ruby
+ - sendgrid-go
+ - smtpapi-go
+ - sendgrid-java
+ - smtpapi-java
+ - docs
+
+# The following represents the package managers this code supports
+package_manager_urls:
+ - https://www.nuget.org/packages/SendGrid
+ - https://www.npmjs.com/package/sendgrid
+ - https://packagist.org/packages/sendgrid/sendgrid
+ - https://pypi.python.org/pypi/sendgrid
+ - https://rubygems.org/gems/sendgrid-ruby
+
+# This email will be sent upon successful execution
+email:
+  from: 'DX Team <dx@sendgrid.com>'
+  to: 'DX Team <dx@sendgrid.com>'
+  subject: ' - Package Manager Open Source Downloads and GitHub Data Updated [Automated]'
+  body: 'Data logged to DB on Heroku.'

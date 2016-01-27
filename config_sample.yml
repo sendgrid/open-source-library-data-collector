@@ -1,0 +1,37 @@
+# The GitHub user that owns the repos you want to examine
+github_user:
+ - sendgrid
+
+# List all the repos for which you want to obtain data
+github_repos:
+ - sendgrid-csharp
+ - smtpapi-csharp
+ - sendgrid-python
+ - smtpapi-python
+ - sendgrid-nodejs
+ - smtpapi-nodejs
+ - nodemailer-sendgrid-transport
+ - sendgrid-php
+ - smtpapi-php
+ - sendgrid-ruby
+ - smtpapi-ruby
+ - sendgrid-go
+ - smtpapi-go
+ - sendgrid-java
+ - smtpapi-java
+ - docs
+
+# The following represents the package managers this code supports
+package_manager_urls:
+ - https://www.nuget.org/packages/<path-to-your-package>
+ - https://www.npmjs.com/package/<path-to-your-package>
+ - https://packagist.org/packages/<path-to-your-package>
+ - https://pypi.python.org/pypi/<path-to-your-package>
+ - https://rubygems.org/gems/<path-to-your-package>
+
+# This email will be sent upon successful execution
+email:
+  from: 'First Last <email@example.com>'
+  to: 'First Last <email@example.com>'
+  subject: 'Your Subject'
+  body: 'The Email Body in HTML.'
