@@ -1,18 +1,29 @@
 import os
+import datetime
 import github3
-from db_connector import *
+from db_connector import DBConnector, GitHubData
 
 class GitHub(object):
+    """Collect time stamped repository data from GitHub and store in a DB"""
     def __init__(self):
         if (os.environ.get('ENV') != 'prod'): # We are not in Heroku
             github_token = os.environ.get('GITHUB_TOKEN')
         else:
             github_token = os.environ['GITHUB_TOKEN']
-
         self.github = github3.login(token=github_token)
         self.db = DBConnector()
         
     def update_library_data(self, repo_user, repo_name):
+        """Gets data from a given GitHub repo and adds it to the DB
+
+        :param repo_user: the username of the repo's owner
+        :param repo_name: the name of the GitHub repo
+        :type repo_user:  string
+        :type repo_name:  string
+
+        :returns: GitHub statistics for a given repo
+        :rtype:   Dictonary
+        """
         github_data = self.github.repository(repo_user, repo_name)
         lib_data = {}
         lib_data['num_pull_requests'] = sum(1 for i in github_data.iter_pulls())

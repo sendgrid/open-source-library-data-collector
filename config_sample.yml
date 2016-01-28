@@ -2,7 +2,7 @@
 github_user:
  - sendgrid
 
-# List all the repos for which you want to obtain data
+# List all the repos to grab data from
 github_repos:
  - sendgrid-csharp
  - smtpapi-csharp
@@ -21,7 +21,7 @@ github_repos:
  - smtpapi-java
  - docs
 
-# The following represents the package managers this code supports
+# Thee package managers this code supports
 package_manager_urls:
  - https://www.nuget.org/packages/<path-to-your-package>
  - https://www.npmjs.com/package/<path-to-your-package>

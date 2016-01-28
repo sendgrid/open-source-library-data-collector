@@ -61,3 +61,4 @@ activate/
 .env
 .config
 csv/
+example.py

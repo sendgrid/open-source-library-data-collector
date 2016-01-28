@@ -1,12 +1,12 @@
-from db_connector import *
-from config import *
-from github import *
-from package_managers import *
-from sendgrid_email import *
+from db_connector import DBConnector
+from config import Config
+from github import GitHub
+from package_managers import PackageManagers
+from sendgrid_email import SendGrid
 
 config = Config()
 db = DBConnector()
-github = GitHub()
+github = GitHub() 
 pm = PackageManagers()
 sg = SendGrid()
 
