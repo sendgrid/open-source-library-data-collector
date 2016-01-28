@@ -13,7 +13,7 @@ cd sendgrid-open-source-library-external-data
 virtualenv venv
 cp .env_sample .env
 ```
-Update your settings in `.env` and create your database for this project (the table name is open-source-external-library-data)
+Update your settings in `.env`
 ```
 mysql -u USERNAME -p -e "CREATE DATABASE IF NOT EXISTS open-source-external-library-data"; 
 mysql -u USERNAME -p open-source-external-library-data < db/data_schema.sql
