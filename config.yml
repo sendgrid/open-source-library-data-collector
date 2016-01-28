@@ -33,5 +33,5 @@ package_manager_urls:
 email:
   from: 'DX Team <dx@sendgrid.com>'
   to: 'DX Team <dx@sendgrid.com>'
-  subject: ' - Package Manager Open Source Downloads and GitHub Data Updated [Automated]'
+  subject: 'Package Manager Open Source Downloads and GitHub Data Updated [Automated]'
   body: 'Data logged to DB on Heroku.'

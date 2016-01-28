@@ -5,13 +5,10 @@ from sqlalchemy import create_engine, MetaData, Table, exc
 from sqlalchemy.orm import mapper, sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 import datetime
+from config import *
 
 if (os.environ.get('ENV') != 'prod'):
-    if os.path.exists('/Users/thinkingserious/Workspace/sendgrid-open-source-library-external-data/.env'):
-        for line in open('/Users/thinkingserious/Workspace/sendgrid-open-source-library-external-data/.env'):
-            var = line.strip().split('=')
-            if len(var) == 2:
-                os.environ[var[0]] = var[1]
+    Config.init_environment()
     mysql_db = os.environ.get('MYSQL_DB')
     mysql_host = os.environ.get('MYSQL_HOST')
     mysql_username = os.environ.get('MYSQL_USERNAME')

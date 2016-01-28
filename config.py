@@ -4,12 +4,7 @@ import yaml
 class Config(object):
     def __init__(self):
         if (os.environ.get('ENV') != 'prod'):  # We are not in Heroku
-            """Setup Environment"""
-            if os.path.exists(os.path.abspath(os.path.dirname(__file__)) + '/.env'):
-                for line in open(os.path.abspath(os.path.dirname(__file__)) + '/.env'):
-                    var = line.strip().split('=')
-                    if len(var) == 2:
-                        os.environ[var[0]] = var[1]
+            self.init_environment()
         
         """Initialize Configuration"""
         with open(os.path.abspath(os.path.dirname(__file__)) + '/config.yml') as stream:
@@ -21,6 +16,15 @@ class Config(object):
             self._from_email = config['email']['from']
             self._email_subject = config['email']['subject']
             self._email_body = config['email']['body']
+
+    @staticmethod
+    def init_environment():
+        """Setup Environment"""
+        if os.path.exists(os.path.abspath(os.path.dirname(__file__)) + '/.env'):
+            for line in open(os.path.abspath(os.path.dirname(__file__)) + '/.env'):
+                var = line.strip().split('=')
+                if len(var) == 2:
+                    os.environ[var[0]] = var[1]
 
     @property
     def github_user(self):
