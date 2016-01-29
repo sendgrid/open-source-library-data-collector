@@ -57,19 +57,45 @@ class DBConnector(object):
     def __init__(self):
         self.session = loadSession()
         return
-    
-    """Add an item to the DB
-    :returns:   True if the addition was successful
-    :rtype:     bool
-    """    
-    def add_data(self, data_object):
-        self.session.merge(data_object)
-        self.session.commit()
-        return True
 
-    """Add an item to the DB
-    :returns:   All data objects (GitHubData or PackageManagerData) in the DB
-    :rtype:     List
-    """      
+    def add_data(self, data_object):
+        """Add an item to the DB
+        :param data_object: An object that represents a table in the DB
+        :type data_object:  Object
+        
+        :returns:   True if the addition was successful
+        :rtype:     Data object
+        """
+        res = self.session.merge(data_object)
+        self.session.commit()
+        return res
+
     def get_data(self, data_object):
+        """Add an item to the DB
+        :param data_object: An object that represents a table in the DB
+        :type data_object:  Object
+
+        :returns:   All data objects (GitHubData or PackageManagerData) in the DB
+        :rtype:     List
+        """
         return self.session.query(data_object).all()
+        
+    def delete_data(self, id, table):
+        """Deletes a record from the DB
+        :param id:    ID of the record
+        :param table: Table to delete it from, 'github_data' or 'package_manager_data'
+        :type id:     Integer
+        :type table:  String
+        
+        :returns:     True if deleted
+        :rtype:       Bool
+        """
+        if table == 'github_data':
+            self.session.query(GitHubData).filter(GitHubData.id==id).delete()
+            self.session.commit()
+            return True
+        elif table == 'package_manager_data':
+            res = self.session.query(PackageManagerData).filter(PackageManagerData.id==id).delete()
+            self.session.commit()
+            return True
+        return False

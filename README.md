@@ -59,4 +59,8 @@ pyenv rehash
 ````
 
 ## Execute: ##
+
+```
+source venv/bin/activate
 tox
+```
