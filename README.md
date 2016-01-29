@@ -37,7 +37,7 @@ source venv/bin/activate
 python app.py
 ```
 
-# Heroku Deploy # 
+# Heroku Deploy
 
 ```
 heroku login
