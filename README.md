@@ -2,7 +2,7 @@ Quickly and easily store data about your open source projects on GitHub and vari
 
 <<Travis Badge>> <<CodeClimate Badge>> <<Language Specific Badges>>
 
-# Installation
+# Local Installation
 
 ## Prerequisites ##
 
@@ -36,6 +36,24 @@ pip install -r requirements.txt
 source venv/bin/activate
 python app.py
 ```
+
+# Heroku Deploy
+
+```
+heroku login
+heroku create
+heroku addons:create cleardb:ignite
+```
+Access the cleardb DB and create the tables in db/data_schema.sql
+```
+heroku config:add ENV=prod
+heroku config:add GITHUB_TOKEN=<<your_github_token>>
+heroku config:add SENDGRID_API_KEY=<<your_sendgrid_api_key>>
+heroku addons:create scheduler:standard
+```
+Configure the schedular addon in your Heroku dashboard to run `python app.py` at your desired frequency.
+
+Test by running `heroku run worker`
 
 # Announcements
 
