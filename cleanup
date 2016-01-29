@@ -1,2 +1,7 @@
 #!/bin/bash
 find . -name "*.pyc" -exec rm -rf {} \;
+rm -rf __pycache__/;
+rm -rf dist
+rm -rf build
+rm -rf open_source_library_data.egg-info
+rm -rf .tox

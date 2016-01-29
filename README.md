@@ -32,3 +32,31 @@ source venv/bin/activate
 python app.py
 ```
 
+# Testing #
+
+## Prequisites: ##
+
+The above local "Initial setup" is complete
+
+* [pyenv](https://github.com/yyuu/pyenv)
+* [tox](https://pypi.python.org/pypi/tox)
+* [pandoc](http://pandoc.org)
+ 
+## Initial setup: ##
+
+Add eval "$(pyenv init -)" to your .profile after installing tox, you only need to do this once.
+
+```
+pyenv install 2.6.9
+pyenv install 2.7.8
+pyenv install 3.2.6
+pyenv install 3.3.6
+pyenv install 3.4.3
+pyenv install 3.5.0
+python setup.py install
+pyenv local 3.5.0 3.4.3 3.3.6 3.2.6 2.7.8 2.6.9
+pyenv rehash
+````
+
+## Execute: ##
+tox

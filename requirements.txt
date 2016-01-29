@@ -3,7 +3,6 @@ requests
 beautifulsoup4
 sendgrid
 python-dateutil
-logging
 sqlalchemy
 pymysql
 datetime
