@@ -2,9 +2,16 @@ import os
 import sys
 from setuptools import setup, find_packages
 
+
 def getRequires():
-    deps = ['github3.py', 'requests', 'beautifulsoup4', 'sendgrid', 'python-dateutil',
-            'sqlalchemy', 'datetime', 'pyyaml']
+    deps = ['github3.py',
+            'requests',
+            'beautifulsoup4',
+            'sendgrid',
+            'python-dateutil'
+            'sqlalchemy',
+            'datetime',
+            'pyyaml']
     if (2, 6) <= sys.version_info < (2, 7):
         deps.append('unittest2')
         deps.append('pymysql')
@@ -19,12 +26,13 @@ def getRequires():
         deps.append('pymysql')
     return deps
 
+base_url = 'https://github.com/sendgrid/'
 setup(
     name='open-source-library-data',
     version='1.0.0',
     author='Elmer Thomas',
     author_email='dx@sendgrid.com',
-    url='https://github.com/sendgrid/sendgrid-open-source-library-external-data',
+    url=base_url + 'sendgrid-open-source-library-external-data',
     packages=find_packages(),
     license='MIT',
     description='GitHub and Package Manager data retrieval',

@@ -8,18 +8,22 @@ if (3, 1) < sys.version_info < (3, 6):
         return x
 else:
     import codecs
+
     def u(x):
         return codecs.unicode_escape_decode(x)[0]
 
+
 class PackageManagers(object):
-    """Collect time stamped package manager data from various package managers and store in a DB"""
+    """Collect time stamped package manager data from various package managers
+       and store in a DB"""
     def __init__(self):
         self.db = DBConnector()
-        
+
     def update_package_manager_data(self, package_manager_urls):
         """Gets data given package manager urls and adds it to the DB
 
-        :param package_manager_urls: URL(s) to the package you want to obtain download data from
+        :param package_manager_urls: URL(s) to the package you want to obtain
+                                     download data from
         :type package_manager_urls:  Array of strings
 
         :returns: Returns the data object that was added to the DB
@@ -31,7 +35,7 @@ class PackageManagers(object):
         num_python_downloads = None
         num_ruby_downloads = None
         for url in package_manager_urls:
-            if 'nuget' in url: 
+            if 'nuget' in url:
                 num_total_csharp_downloads = self.csharp_downloads(url)
             if 'npmjs' in url:
                 num_nodejs_monthly_downloads = self.nodejs_downloads(url)
@@ -43,10 +47,10 @@ class PackageManagers(object):
                 num_ruby_downloads = self.ruby_downloads(url)
 
         return self.update_db(num_total_csharp_downloads,
-                  num_nodejs_monthly_downloads,
-                  num_php_downloads,
-                  num_python_downloads,
-                  num_ruby_downloads)
+                              num_nodejs_monthly_downloads,
+                              num_php_downloads,
+                              num_python_downloads,
+                              num_ruby_downloads)
 
     def csharp_downloads(self, url):
         """Gets library download data from nuget.org
@@ -59,10 +63,10 @@ class PackageManagers(object):
         """
         r = requests.get(url)
         soup = BeautifulSoup(r.text, "html.parser")
-        mydivs = soup.findAll("p", { "class" : "stat-number" })
+        mydivs = soup.findAll("p", {"class": "stat-number"})
         nodes = []
         for node in mydivs:
-           nodes.append(''.join(node.findAll(text=True)))
+            nodes.append(''.join(node.findAll(text=True)))
         num_total_csharp_downloads = nodes[0].replace(',', '')
         return num_total_csharp_downloads
 
@@ -77,10 +81,11 @@ class PackageManagers(object):
         """
         r = requests.get(url)
         soup = BeautifulSoup(r.text, "html.parser")
-        mydivs = soup.findAll("strong", { "class" : "pretty-number monthly-downloads" })
+        mydivs = soup.findAll("strong",
+                              {"class": "pretty-number monthly-downloads"})
         nodes = []
         for node in mydivs:
-           nodes.append(''.join(node.findAll(text=True)))
+            nodes.append(''.join(node.findAll(text=True)))
         num_nodejs_monthly_downloads = nodes[0].replace(',', '')
         return num_nodejs_monthly_downloads
 
@@ -95,10 +100,11 @@ class PackageManagers(object):
         """
         r = requests.get(url)
         soup = BeautifulSoup(r.text, "html.parser")
-        mydivs = soup.findAll("div", { "class" : "facts col-xs-12 col-sm-6 col-md-12" })
+        mydivs = soup.findAll("div",
+                              {"class": "facts col-xs-12 col-sm-6 col-md-12"})
         nodes = []
         for node in mydivs:
-           nodes.append(''.join(node.findAll(text=True)))
+            nodes.append(''.join(node.findAll(text=True)))
         num_php_downloads = nodes[0][11:].replace(u('\u2009'), '').split('\n')
         num_php_downloads = str(num_php_downloads[0])
         return num_php_downloads
@@ -114,11 +120,15 @@ class PackageManagers(object):
         """
         r = requests.get(url)
         soup = BeautifulSoup(r.text, "html.parser")
-        mydivs = soup.findAll("ul", { "class" : "nodot" })
+        mydivs = soup.findAll("ul", {"class": "nodot"})
         nodes = []
         for node in mydivs:
-           nodes.append(''.join(node.findAll(text=True)))
-        num_python_downloads = nodes[0].replace(u('\n'), '').rpartition('week')[-1].rpartition('downloads')[0][2:].replace(u('\u2009'), '')
+            nodes.append(''.join(node.findAll(text=True)))
+        num_python_downloads = \
+            nodes[0].replace(u('\n'), '') \
+            .rpartition('week')[-1] \
+            .rpartition('downloads')[0][2:] \
+            .replace(u('\u2009'), '')
         return num_python_downloads
 
     def ruby_downloads(self, url):
@@ -132,15 +142,15 @@ class PackageManagers(object):
         """
         r = requests.get(url)
         soup = BeautifulSoup(r.text, "html.parser")
-        mydivs = soup.findAll("span", { "class" : "gem__downloads" })
+        mydivs = soup.findAll("span", {"class": "gem__downloads"})
         nodes = []
         for node in mydivs:
-           nodes.append(''.join(node.findAll(text=True)))
+            nodes.append(''.join(node.findAll(text=True)))
         num_ruby_downloads = nodes[0].replace(',', '')
         return num_ruby_downloads
 
     def update_db(
-            self, 
+            self,
             num_total_csharp_downloads,
             num_nodejs_monthly_downloads,
             num_php_downloads,
@@ -149,17 +159,17 @@ class PackageManagers(object):
             ):
         """Update the DB with the package manager data
 
-        :param num_total_csharp_downloads:   The number of total library downloads
-        :param num_nodejs_monthly_downloads: The number of library downloads in the last month
-        :param num_php_downloads:            The number of total library downloads
-        :param num_python_downloads:         The number of library downloads in the last month
-        :param num_ruby_downloads:           The number of total library downloads
+        :param num_total_csharp_downloads:   # of total downloads
+        :param num_nodejs_monthly_downloads: # of downloads in the last month
+        :param num_php_downloads:            # of total downloads
+        :param num_python_downloads:         # of downloads in the last month
+        :param num_ruby_downloads:           # of total downloads
         :type  num_total_csharp_downloads:   Integer
         :type  num_nodejs_monthly_downloads: Integer
         :type  num_php_downloads:            Integer
         :type  num_python_downloads:         Integer
         :type  num_ruby_downloads:           Integer
-        
+
         :returns: Returns the data object that was added to the DB
         :rtype:   Data object
         """

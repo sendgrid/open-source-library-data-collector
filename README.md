@@ -1,4 +1,8 @@
-# Install and run locally #
+Quickly and easily store data about your open source projects on GitHub and various Package Managers.
+
+<<Travis Badge>> <<CodeClimate Badge>> <<Language Specific Badges>>
+
+# Installation
 
 ## Prerequisites ##
 
@@ -13,6 +17,7 @@ cd sendgrid-open-source-library-external-data
 virtualenv venv
 cp .env_sample .env
 ```
+
 Update your settings in `.env`
 ```
 mysql -u USERNAME -p -e "CREATE DATABASE IF NOT EXISTS open-source-external-library-data"; 
@@ -25,42 +30,43 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-## Execute: ##
+# Usage
 
 ```
 source venv/bin/activate
 python app.py
 ```
 
-# Testing #
+# Announcements
 
-## Prequisites: ##
+<<Library Specific Announcements Here>>
 
-The above local "Initial setup" is complete
+## Roadmap
 
-* [pyenv](https://github.com/yyuu/pyenv)
-* [tox](https://pypi.python.org/pypi/tox)
-* [pandoc](http://pandoc.org)
- 
-## Initial setup: ##
+<<Use Milestones and Issues>>
 
-Add eval "$(pyenv init -)" to your .profile after installing tox, you only need to do this once.
+<<Describe each Milestone>>
 
-```
-pyenv install 2.6.9
-pyenv install 2.7.8
-pyenv install 3.2.6
-pyenv install 3.3.6
-pyenv install 3.4.3
-pyenv install 3.5.0
-python setup.py install
-pyenv local 3.5.0 3.4.3 3.3.6 3.2.6 2.7.8 2.6.9
-pyenv rehash
-````
+## How to Contribute
 
-## Execute: ##
+We encourage contribution to our libraries, please see our [CONTRIBUTING](<<Link to Contributing Guide>>) guide for details.
 
-```
-source venv/bin/activate
-tox
-```
+## Usage
+
+<<Endpoint Name (pull from docs)>>
+<<Endpoint Description (pull from docs)>>
+<<Link to Example Code>>
+
+...
+
+## Unsupported Libraries
+
+<<Link to Community Contributed Libraries>>
+
+## About
+
+<<SendGrid Logo>>
+
+<<Library Name>> is guided and supported by the SendGrid [Developer Experience Team](mailto:dx@sendgrid.com).
+
+<<Library Name>> is maintained and funded by SendGrid, inc. The names and logos for <<Library Name>> are trademarks of SendGrid, inc.
