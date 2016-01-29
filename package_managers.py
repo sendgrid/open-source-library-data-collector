@@ -2,6 +2,14 @@ import requests
 import datetime
 from bs4 import BeautifulSoup
 from db_connector import DBConnector, PackageManagerData
+import sys
+if (3, 1) < sys.version_info < (3, 6):
+    def u(x):
+        return x
+else:
+    import codecs
+    def u(x):
+        return codecs.unicode_escape_decode(x)[0]
 
 class PackageManagers(object):
     """Collect time stamped package manager data from various package managers and store in a DB"""
@@ -14,8 +22,8 @@ class PackageManagers(object):
         :param package_manager_urls: URL(s) to the package you want to obtain download data from
         :type package_manager_urls:  Array of strings
 
-        :returns: True if the addition was successful
-        :rtype:   Bool
+        :returns: Returns the data object that was added to the DB
+        :rtype:   Data object
         """
         num_total_csharp_downloads = None
         num_nodejs_monthly_downloads = None
@@ -34,13 +42,11 @@ class PackageManagers(object):
             if 'rubygems' in url:
                 num_ruby_downloads = self.ruby_downloads(url)
 
-        self.update_db(num_total_csharp_downloads,
+        return self.update_db(num_total_csharp_downloads,
                   num_nodejs_monthly_downloads,
                   num_php_downloads,
                   num_python_downloads,
                   num_ruby_downloads)
-
-        return True
 
     def csharp_downloads(self, url):
         """Gets library download data from nuget.org
@@ -93,7 +99,7 @@ class PackageManagers(object):
         nodes = []
         for node in mydivs:
            nodes.append(''.join(node.findAll(text=True)))
-        num_php_downloads = nodes[0][11:].replace(u'\u2009', '').split('\n')
+        num_php_downloads = nodes[0][11:].replace(u('\u2009'), '').split('\n')
         num_php_downloads = str(num_php_downloads[0])
         return num_php_downloads
 
@@ -112,7 +118,7 @@ class PackageManagers(object):
         nodes = []
         for node in mydivs:
            nodes.append(''.join(node.findAll(text=True)))
-        num_python_downloads = nodes[0].replace(u'\n', '').rpartition('week')[-1].rpartition('downloads')[0][2:].replace(u'\u2009', '')
+        num_python_downloads = nodes[0].replace(u('\n'), '').rpartition('week')[-1].rpartition('downloads')[0][2:].replace(u('\u2009'), '')
         return num_python_downloads
 
     def ruby_downloads(self, url):
@@ -154,8 +160,8 @@ class PackageManagers(object):
         :type  num_python_downloads:         Integer
         :type  num_ruby_downloads:           Integer
         
-        :returns: True if the addition was successful
-        :rtype:   Bool
+        :returns: Returns the data object that was added to the DB
+        :rtype:   Data object
         """
         packagedata = PackageManagerData(
                                 date_updated=datetime.datetime.now(),
@@ -165,5 +171,4 @@ class PackageManagers(object):
                                 python_downloads=num_python_downloads,
                                 ruby_downloads=num_ruby_downloads
                                 )
-        self.db.add_data(packagedata)
-        return True
+        return self.db.add_data(packagedata)

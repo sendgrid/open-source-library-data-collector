@@ -8,7 +8,7 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 from config import Config
 
-if (os.environ.get('ENV') != 'prod'):
+if (os.environ.get('ENV') != 'prod'):  # We are not in Heroku
     Config.init_environment()
     mysql_db = os.environ.get('MYSQL_DB')
     mysql_host = os.environ.get('MYSQL_HOST')

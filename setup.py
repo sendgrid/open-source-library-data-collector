@@ -8,6 +8,9 @@ def getRequires():
     if (2, 6) <= sys.version_info < (2, 7):
         deps.append('unittest2')
         deps.append('pymysql')
+        deps.append('pyopenssl')
+        deps.append('ndg-httpsclient')
+        deps.append('pyasn1')
     elif (2, 7) <= sys.version_info < (3, 0):
         deps.append('pymysql')
     elif (3, 0) <= sys.version_info < (3, 2):

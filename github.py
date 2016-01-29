@@ -21,8 +21,8 @@ class GitHub(object):
         :type repo_user:  string
         :type repo_name:  string
 
-        :returns: GitHub statistics for a given repo
-        :rtype:   Dictonary
+        :returns: Returns the data object that was added to the DB
+        :rtype:   Data object
         """
         github_data = self.github.repository(repo_user, repo_name)
         lib_data = {}
@@ -48,5 +48,4 @@ class GitHub(object):
                                 number_of_stargazers=lib_data['num_stargazers'],
                                 number_of_forks=lib_data['num_forks']
                                 )
-        self.db.add_data(github_data_import)
-        return lib_data
+        return self.db.add_data(github_data_import)
