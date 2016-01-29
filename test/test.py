@@ -14,18 +14,26 @@ try:
 except NameError:
     basestring = str
 
+
 class TestConfig(unittest.TestCase):
     def setUp(self):
         self.config = Config()
 
     def test_initialization(self):
-        self.assertTrue(isinstance(os.environ.get('GITHUB_TOKEN'), basestring))
-        self.assertTrue(isinstance(os.environ.get('SENDGRID_API_KEY'), basestring))
-        self.assertTrue(isinstance(os.environ.get('MYSQL_DB'), basestring))
-        self.assertTrue(isinstance(os.environ.get('MYSQL_HOST'), basestring))
-        self.assertTrue(isinstance(os.environ.get('MYSQL_USERNAME'), basestring))
-        self.assertTrue(isinstance(os.environ.get('MYSQL_PASSWORD'), basestring))
-        self.assertTrue(isinstance(os.environ.get('MYSQL_PORT'), basestring))
+        github_token = os.environ.get('GITHUB_TOKEN')
+        self.assertTrue(isinstance(github_token, basestring))
+        sendgrid_api_key = os.environ.get('SENDGRID_API_KEY')
+        self.assertTrue(isinstance(sendgrid_api_key, basestring))
+        mysql_db = os.environ.get('MYSQL_DB')
+        self.assertTrue(isinstance(mysql_db, basestring))
+        mysql_host = os.environ.get('MYSQL_HOST')
+        self.assertTrue(isinstance(mysql_host, basestring))
+        mysql_username = os.environ.get('MYSQL_USERNAME')
+        self.assertTrue(isinstance(mysql_username, basestring))
+        mysql_password = os.environ.get('MYSQL_PASSWORD')
+        self.assertTrue(isinstance(mysql_password, basestring))
+        mysql_port = os.environ.get('MYSQL_PORT')
+        self.assertTrue(isinstance(mysql_port, basestring))
         self.assertTrue(isinstance(self.config.github_user, basestring))
         self.assertTrue(isinstance(self.config.github_repos, list))
         self.assertTrue(isinstance(self.config.package_manager_urls, list))
@@ -33,6 +41,7 @@ class TestConfig(unittest.TestCase):
         self.assertTrue(isinstance(self.config.from_email, basestring))
         self.assertTrue(isinstance(self.config.email_subject, basestring))
         self.assertTrue(isinstance(self.config.email_body, basestring))
+
 
 class TestDBConnector(unittest.TestCase):
     def setUp(self):
@@ -56,7 +65,7 @@ class TestDBConnector(unittest.TestCase):
         self.assertTrue(isinstance(res, GitHubData))
         res = self.db.delete_data(res.id, 'github_data')
         self.assertTrue(res)
-        
+
         packagedata = PackageManagerData(
                                 date_updated=datetime.datetime.now(),
                                 csharp_downloads=0,
@@ -75,29 +84,34 @@ class TestDBConnector(unittest.TestCase):
         self.assertTrue(isinstance(github_data, list))
         self.assertTrue(isinstance(github_data[0], GitHubData))
 
+
 class TestGitHub(unittest.TestCase):
     def setUp(self):
         self.github = GitHub()
-        self.db = DBConnector() 
+        self.db = DBConnector()
         self.config = Config()
 
     def test_update_library_data(self):
-        res = self.github.update_library_data(self.config.github_user, self.config.github_repos[0])
+        res = self.github.update_library_data(self.config.github_user,
+                                              self.config.github_repos[0])
         self.assertTrue(isinstance(res, GitHubData))
         res = self.db.delete_data(res.id, 'github_data')
         self.assertTrue(res)
 
+
 class TestPackageManagers(unittest.TestCase):
     def setUp(self):
         self.pm = PackageManagers()
-        self.db = DBConnector() 
+        self.db = DBConnector()
         self.config = Config()
 
     def test_update_package_manager_data(self):
-        res = self.pm.update_package_manager_data(self.config.package_manager_urls)
+        res = self.pm.update_package_manager_data(
+               self.config.package_manager_urls)
         self.assertTrue(isinstance(res, PackageManagerData))
         res = self.db.delete_data(res.id, 'package_manager_data')
         self.assertTrue(res)
+
 
 class TestSendGridEmail(unittest.TestCase):
     def setUp(self):
@@ -105,7 +119,12 @@ class TestSendGridEmail(unittest.TestCase):
         self.config = Config()
 
     def test_send_email(self):
-        res = self.sg.send_email('elmer.thomas+test@sendgrid.com', self.config.from_email, self.config.email_subject, self.config.email_body)
+        res = self.sg.send_email(
+               'elmer.thomas+test@sendgrid.com',
+               self.config.from_email,
+               self.config.email_subject,
+               self.config.email_body
+               )
         self.assertEqual(200, res[0])
         self.assertEqual('{"message":"success"}', res[1].decode("utf-8"))
 

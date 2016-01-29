@@ -8,7 +8,7 @@ def getRequires():
             'requests',
             'beautifulsoup4',
             'sendgrid',
-            'python-dateutil'
+            'python-dateutil',
             'sqlalchemy',
             'datetime',
             'pyyaml']
