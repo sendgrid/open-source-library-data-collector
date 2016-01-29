@@ -30,14 +30,14 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-# Usage
+## Usage ##
 
 ```
 source venv/bin/activate
 python app.py
 ```
 
-# Heroku Deploy
+# Heroku Deploy # 
 
 ```
 heroku login
@@ -55,11 +55,11 @@ Configure the schedular addon in your Heroku dashboard to run `python app.py` at
 
 Test by running `heroku run worker`
 
-# Announcements
+## Announcements ##
 
 <<Library Specific Announcements Here>>
 
-## Roadmap
+## Roadmap ##
 
 <<Use Milestones and Issues>>
 
@@ -68,18 +68,6 @@ Test by running `heroku run worker`
 ## How to Contribute
 
 We encourage contribution to our libraries, please see our [CONTRIBUTING](<<Link to Contributing Guide>>) guide for details.
-
-## Usage
-
-<<Endpoint Name (pull from docs)>>
-<<Endpoint Description (pull from docs)>>
-<<Link to Example Code>>
-
-...
-
-## Unsupported Libraries
-
-<<Link to Community Contributed Libraries>>
 
 ## About
 

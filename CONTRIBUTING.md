@@ -57,16 +57,16 @@ The GitHub issue tracker is the preferred channel for library feature requests, 
 
 We welcome direct contributions to the <<Project Name>> code base. Thank you!
 
-## Development Environment
+### Development Environment ###
 
-### Install and run locally ###
+#### Install and run locally ####
 
-#### Prerequisites ####
+##### Prerequisites #####
 
 * [virtualenv](https://pypi.python.org/pypi/virtualenv)
 * [mysql](https://www.mysql.com)
 
-#### Initial setup: ####
+##### Initial setup: #####
 
 ```
 git clone https://github.com/sendgrid/sendgrid-open-source-library-external-data.git
@@ -87,7 +87,7 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-#### Execute: ####
+##### Execute: #####
 
 ```
 source venv/bin/activate
@@ -96,31 +96,31 @@ python app.py
 
 ## Understanding the Code Base ##
 
-### app.py ###
+**app.py**
 
 This is the entry point of this code. It grabs the GitHub and PackageManager data and dumps them in the DB.
 
-### config.yml ###
+**config.yml**
 
 Define all non-private configuration variables here. 
 
-### .env ###
+**.env**
 
 Define all private configurartion variables here.
 
-### db_connector.py ###
+**db_connector.py**
 
 Interface to the DB, courtesy of SQLAlchemy.
 
-### github.py ###
+**github.py**
 
 Interface to GitHub's API to grab repository data.
 
-### package_managers.py ###
+**package_managers.py**
 
 Scrapes various package manager web pages to obtain your library's download data.
 
-### sendgrid_email.py ###
+**sendgrid_email.py**
 
 Send email through SendGrid.
 
