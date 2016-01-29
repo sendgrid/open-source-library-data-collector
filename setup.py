@@ -16,15 +16,6 @@ def getRequires():
         deps.append('pymysql')
     return deps
 
-"""
-try:
-    from pypandoc import convert
-    read_md = lambda f: convert(f, 'rst')
-except ImportError:
-    print("warning: pypandoc module not found, could not convert Markdown to RST")
-    read_md = lambda f: open(f, 'r').read()
-"""
-
 setup(
     name='open-source-library-data',
     version='1.0.0',
@@ -34,6 +25,7 @@ setup(
     packages=find_packages(),
     license='MIT',
     description='GitHub and Package Manager data retrieval',
+    long_description='Check out the README at GitHub',
     install_requires=getRequires(),
     classifiers=[
         'Programming Language :: Python :: 2.6',
@@ -44,5 +36,3 @@ setup(
         'Programming Language :: Python :: 3.5'
     ]
 )
-
-#long_description=read_md('./README.md'),
