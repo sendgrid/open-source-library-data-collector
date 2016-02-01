@@ -55,21 +55,21 @@ Configure the schedular addon in your Heroku dashboard to run `python app.py` at
 
 Test by running `heroku run worker`
 
-## Announcements ##
+# Announcements
 
 <<Library Specific Announcements Here>>
 
-## Roadmap ##
+# Roadmap
 
 <<Use Milestones and Issues>>
 
 <<Describe each Milestone>>
 
-## How to Contribute
+# How to Contribute
 
 We encourage contribution to our libraries, please see our [CONTRIBUTING](<<Link to Contributing Guide>>) guide for details.
 
-## About
+# About
 
 <<SendGrid Logo>>
 
