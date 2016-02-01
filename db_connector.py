@@ -65,7 +65,7 @@ def loadSession():
 
 
 class DBConnector(object):
-    """CRUD for the sync email list database, focused on un/resubscribes"""
+    """CRUD for DB access"""
     def __init__(self):
         self.session = loadSession()
         return
