@@ -185,6 +185,6 @@ class PackageManagers(object):
                                 php_downloads=num_php_downloads,
                                 python_downloads=num_python_downloads,
                                 ruby_downloads=num_ruby_downloads,
-                                python_http_client_downloads=python_http_client_downloads
+                                python_http_client_downloads=num_python_http_client_downloads
                                 )
         return self.db.add_data(packagedata)
