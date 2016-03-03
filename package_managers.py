@@ -34,6 +34,7 @@ class PackageManagers(object):
         num_php_downloads = None
         num_python_downloads = None
         num_ruby_downloads = None
+        num_python_http_client_downloads = None
         for url in package_manager_urls:
             if 'nuget' in url:
                 num_total_csharp_downloads = self.csharp_downloads(url)
@@ -41,8 +42,10 @@ class PackageManagers(object):
                 num_nodejs_monthly_downloads = self.nodejs_downloads(url)
             if 'packagist' in url:
                 num_php_downloads = self.php_downloads(url)
-            if 'pypi' in url:
+            if 'pypi' in url and 'sendgrid' in url:
                 num_python_downloads = self.python_downloads(url)
+            if 'pypi' in url and 'python_http_client' in url:
+                num_python_http_client_downloads = self.python_downloads(url)
             if 'rubygems' in url:
                 num_ruby_downloads = self.ruby_downloads(url)
 
@@ -50,7 +53,8 @@ class PackageManagers(object):
                               num_nodejs_monthly_downloads,
                               num_php_downloads,
                               num_python_downloads,
-                              num_ruby_downloads)
+                              num_ruby_downloads,
+                              num_python_http_client_downloads)
 
     def csharp_downloads(self, url):
         """Gets library download data from nuget.org
@@ -155,7 +159,8 @@ class PackageManagers(object):
             num_nodejs_monthly_downloads,
             num_php_downloads,
             num_python_downloads,
-            num_ruby_downloads
+            num_ruby_downloads,
+            num_python_http_client_downloads
             ):
         """Update the DB with the package manager data
 
@@ -179,6 +184,7 @@ class PackageManagers(object):
                                 nodejs_downloads=num_nodejs_monthly_downloads,
                                 php_downloads=num_php_downloads,
                                 python_downloads=num_python_downloads,
-                                ruby_downloads=num_ruby_downloads
+                                ruby_downloads=num_ruby_downloads,
+                                python_http_client_downloads=python_http_client_downloads
                                 )
         return self.db.add_data(packagedata)

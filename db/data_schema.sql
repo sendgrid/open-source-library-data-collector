@@ -23,5 +23,6 @@ CREATE TABLE `package_manager_data` (
   `python_downloads` int(11) unsigned DEFAULT NULL,
   `ruby_downloads` int(11) unsigned DEFAULT NULL,
   `java_downloads` int(11) unsigned DEFAULT NULL,
+  `python_http_client_downloads` int(11) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;

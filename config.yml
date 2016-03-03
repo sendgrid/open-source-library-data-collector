@@ -19,6 +19,8 @@ github_repos:
  - smtpapi-go
  - sendgrid-java
  - smtpapi-java
+ - python-http-client
+ - sendgrid-swagger
  - docs
 
 # The following represents the package managers this code supports
@@ -27,6 +29,7 @@ package_manager_urls:
  - https://www.npmjs.com/package/sendgrid
  - https://packagist.org/packages/sendgrid/sendgrid
  - https://pypi.python.org/pypi/sendgrid
+ - https://pypi.python.org/pypi/python_http_client
  - https://rubygems.org/gems/sendgrid-ruby
 
 # This email will be sent upon successful execution
