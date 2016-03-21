@@ -22,6 +22,7 @@ github_repos:
  - python-http-client
  - ruby-http-client
  - csharp-http-client
+ - php-http-client
  - sendgrid-swagger
  - docs
 
@@ -31,6 +32,7 @@ package_manager_urls:
  - https://www.nuget.org/packages/SendGrid.CSharp.HTTP.Client
  - https://www.npmjs.com/package/sendgrid
  - https://packagist.org/packages/sendgrid/sendgrid
+ - https://packagist.org/packages/sendgrid/php-http-client
  - https://pypi.python.org/pypi/sendgrid
  - https://pypi.python.org/pypi/python_http_client
  - https://rubygems.org/gems/sendgrid-ruby

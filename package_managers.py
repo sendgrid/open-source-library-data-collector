@@ -37,6 +37,7 @@ class PackageManagers(object):
         num_python_http_client_downloads = None
         num_ruby_http_client_downloads = None
         num_csharp_http_client_downloads = None
+        num_php_http_client_downloads = None
         for url in package_manager_urls:
             if 'https://www.nuget.org/packages/SendGrid' == url:
                 num_total_csharp_downloads = self.csharp_downloads(url)
@@ -44,8 +45,10 @@ class PackageManagers(object):
                 num_csharp_http_client_downloads = self.csharp_downloads(url)
             if 'npmjs' in url:
                 num_nodejs_monthly_downloads = self.nodejs_downloads(url)
-            if 'packagist' in url:
+            if 'https://packagist.org/packages/sendgrid/sendgrid' == url:
                 num_php_downloads = self.php_downloads(url)
+            if 'https://packagist.org/packages/sendgrid/php-http-client' == url:
+                num_php_http_client_downloads = self.php_downloads(url)
             if 'pypi' in url and 'sendgrid' in url:
                 num_python_downloads = self.python_downloads(url)
             if 'pypi' in url and 'python_http_client' in url:
@@ -62,7 +65,8 @@ class PackageManagers(object):
                               num_ruby_downloads,
                               num_python_http_client_downloads,
                               num_ruby_http_client_downloads,
-                              num_csharp_http_client_downloads)
+                              num_csharp_http_client_downloads,
+                              num_php_http_client_downloads)
 
     def csharp_downloads(self, url):
         """Gets library download data from nuget.org
@@ -170,7 +174,8 @@ class PackageManagers(object):
             num_ruby_downloads,
             num_python_http_client_downloads,
             num_ruby_http_client_downloads,
-            num_csharp_http_client_downloads
+            num_csharp_http_client_downloads,
+            num_php_http_client_downloads
             ):
         """Update the DB with the package manager data
 
@@ -197,6 +202,7 @@ class PackageManagers(object):
                                 ruby_downloads=num_ruby_downloads,
                                 python_http_client_downloads=num_python_http_client_downloads,
                                 csharp_http_client_downloads=num_csharp_http_client_downloads,
-                                ruby_http_client_downloads=num_ruby_http_client_downloads
+                                ruby_http_client_downloads=num_ruby_http_client_downloads,
+                                php_http_client_downloads=num_php_http_client_downloads
                                 )
         return self.db.add_data(packagedata)
