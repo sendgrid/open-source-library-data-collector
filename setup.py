@@ -23,7 +23,7 @@ def getRequires():
 
 base_url = 'https://github.com/sendgrid/'
 setup(
-    name='Open Source Library Data Collector',
+    name='open_source_library_data_collector',
     version='1.0.0',
     author='Elmer Thomas',
     author_email='dx@sendgrid.com',
