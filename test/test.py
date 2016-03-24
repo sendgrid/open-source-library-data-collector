@@ -2,11 +2,12 @@ try:
     import unittest2 as unittest
 except ImportError:
     import unittest
-from db_connector import DBConnector, GitHubData, PackageManagerData
-from config import Config
-from github import GitHub
-from package_managers import PackageManagers
-from sendgrid_email import SendGrid
+if os.environ.get('TRAVIS') == None:
+    from db_connector import DBConnector, GitHubData, PackageManagerData
+    from config import Config
+    from github import GitHub
+    from package_managers import PackageManagers
+    from sendgrid_email import SendGrid
 import datetime
 import os
 try:
