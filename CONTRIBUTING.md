@@ -1,6 +1,6 @@
-Hello! Thank you for choosing to help contribute to <<Project Name>>. There are many ways you can contribute and help is always welcome.
+Hello! Thank you for choosing to help contribute to open-source-library-data-collector. There are many ways you can contribute and help is always welcome.
 
-We use [Milestones](<<Link to Milestones>>) to help define current roadmaps, please feel free to grab an issue from the current milestone. Please indicate that you have begun work on it to avoid collisions. Once a PR is made, community review, comments, suggestions and additional PRs are welcomed and encouraged.
+We use [Milestones](https://github.com/sendgrid/open-source-library-data-collector/milestones) to help define current roadmaps, please feel free to grab an issue from the current milestone. Please indicate that you have begun work on it to avoid collisions. Once a PR is made, community review, comments, suggestions and additional PRs are welcomed and encouraged.
 
 To get started, there are a few ways to contribute, which we'll enumerate below:
 
@@ -40,8 +40,8 @@ Any other information you want to share that is relevant to the issue being repo
 
 #### Technical details:
 
-* <<Project Name>> Version: master (latest commit: 2cb34372ef0f31352f7c90015a45e1200cb849da)
-* Python Version: 0.10.16
+* open-source-library-data-collector Version: master (latest commit: 2cb34372ef0f31352f7c90015a45e1200cb849da)
+* Python Version: X.X.X
 ```
 
 ## Feature Request
@@ -55,7 +55,7 @@ The GitHub issue tracker is the preferred channel for library feature requests, 
 
 ## Improvements to the Codebase
 
-We welcome direct contributions to the <<Project Name>> code base. Thank you!
+We welcome direct contributions to the open-source-library-data-collector code base. Thank you!
 
 ### Development Environment ###
 
