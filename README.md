@@ -1,6 +1,6 @@
 Quickly and easily store data about your open source projects on GitHub and various Package Managers.
 
-[![Travis Badge](https://travis-ci.org/sendgrid/open-source-external-library-data.svg?branch=master)](https://travis-ci.org/sendgrid/open-source-external-library-data)
+[![Travis Badge](https://travis-ci.org/sendgrid/open-source-library-data-collector.svg?branch=master)](https://travis-ci.org/sendgrid/open-source-library-data-collector)
 
 # Local Installation
 
@@ -12,7 +12,7 @@ Quickly and easily store data about your open source projects on GitHub and vari
 ## Initial setup: ##
 
 ```
-git clone https://github.com/sendgrid/open-source-external-library-data.git
+git clone https://github.com/sendgrid/open-source-library-data-collector.git
 cd sendgrid-open-source-library-external-data
 virtualenv venv
 cp .env_sample .env
@@ -20,7 +20,7 @@ cp .env_sample .env
 
 Update your settings in `.env`
 ```
-mysql -u USERNAME -p -e "CREATE DATABASE IF NOT EXISTS open-source-external-library-data"; 
+mysql -u USERNAME -p -e "CREATE DATABASE IF NOT EXISTS open-source-library-data-collector"; 
 mysql -u USERNAME -p open-source-external-library-data < db/data_schema.sql
 cp config_sample.yml config.yml
 ```
@@ -73,6 +73,6 @@ We encourage contribution to our libraries, please see our [CONTRIBUTING](https:
 ![SendGrid Logo]
 (https://assets3.sendgrid.com/mkt/assets/logos_brands/small/sglogo_2015_blue-9c87423c2ff2ff393ebce1ab3bd018a4.png)
 
-open-source-external-library-data is guided and supported by the SendGrid [Developer Experience Team](mailto:dx@sendgrid.com).
+open-source-library-data-collector is guided and supported by the SendGrid [Developer Experience Team](mailto:dx@sendgrid.com).
 
-open-source-external-library-data is maintained and funded by SendGrid, inc. The names and logos for open-source-external-library-data are trademarks of SendGrid, inc.
+open-source-library-data-collector is maintained and funded by SendGrid, inc. The names and logos for open-source-external-library-data are trademarks of SendGrid, inc.
