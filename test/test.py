@@ -93,16 +93,18 @@ class TestDBConnector(unittest.TestCase):
 
 class TestGitHub(unittest.TestCase):
     def setUp(self):
-        self.github = GitHub()
-        self.db = DBConnector()
-        self.config = Config()
+        if os.environ.get('TRAVIS') == None:
+            self.github = GitHub()
+            self.db = DBConnector()
+            self.config = Config()
 
     def test_update_library_data(self):
-        res = self.github.update_library_data(self.config.github_user,
-                                              self.config.github_repos[0])
-        self.assertTrue(isinstance(res, GitHubData))
-        res = self.db.delete_data(res.id, 'github_data')
-        self.assertTrue(res)
+        if os.environ.get('TRAVIS') == None:
+            res = self.github.update_library_data(self.config.github_user,
+                                                self.config.github_repos[0])
+            self.assertTrue(isinstance(res, GitHubData))
+            res = self.db.delete_data(res.id, 'github_data')
+            self.assertTrue(res)
 
 
 class TestPackageManagers(unittest.TestCase):
