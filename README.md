@@ -76,3 +76,4 @@ We encourage contribution to our libraries, please see our [CONTRIBUTING](https:
 open-source-library-data-collector is guided and supported by the SendGrid [Developer Experience Team](mailto:dx@sendgrid.com).
 
 open-source-library-data-collector is maintained and funded by SendGrid, inc. The names and logos for open-source-external-library-data are trademarks of SendGrid, inc.
+
