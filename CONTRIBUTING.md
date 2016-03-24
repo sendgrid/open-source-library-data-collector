@@ -69,8 +69,8 @@ We welcome direct contributions to the open-source-library-data-collector code b
 ##### Initial setup: #####
 
 ```
-git clone https://github.com/sendgrid/sendgrid-open-source-library-external-data.git
-cd sendgrid-open-source-library-external-data
+git clone https://github.com/sendgrid/open-source-library-data-collector.git
+cd open-source-library-data-collector
 virtualenv venv
 cp .env_sample .env
 ```
@@ -140,8 +140,6 @@ The above local "Initial setup" is complete
 Add eval "$(pyenv init -)" to your .profile after installing tox, you only need to do this once.
 
 ```
-pyenv install 2.6.9
-pyenv install 2.7.8
 pyenv install 3.2.6
 pyenv install 3.3.6
 pyenv install 3.4.3
@@ -166,14 +164,6 @@ Generally, we follow the style guidelines as suggested by the official language.
 
 Please run your code through [pyflakes](https://pypi.python.org/pypi/pyflakes) and [pep8](https://pypi.python.org/pypi/pep8)
 
-### Directory Structure
-
-<<Library Specific Directory Structure, though there should always be the following:
-* `resources` for Web API v3 endpoints
-* `examples` for example calls
-* `tests`, with `unit` and `integration` sub-directories
->>
-
 ## Creating a Pull Request
 
 1. [Fork](https://help.github.com/fork-a-repo/) the project, clone your fork,
@@ -181,11 +171,11 @@ Please run your code through [pyflakes](https://pypi.python.org/pypi/pyflakes) a
 
    ```bash
    # Clone your fork of the repo into the current directory
-   git clone https://github.com/<your-username>/<<Library Repo>>
+   git clone https://github.com/sendgrid/open-source-library-data-collector
    # Navigate to the newly cloned directory
-   cd <<Library Repo>>
+   cd open-source-library-data-collector
    # Assign the original repo to a remote called "upstream"
-   git remote add upstream https://github.com/sendgrid/<<Library Repo>>
+   git remote add upstream https://github.com/sendgrid/open-source-library-data-collector
    ```
 
 2. If you cloned a while ago, get the latest changes from upstream:
