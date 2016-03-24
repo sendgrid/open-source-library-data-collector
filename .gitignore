@@ -64,3 +64,5 @@ activate/
 csv/
 example.py
 open_source_library_data.egg-info/
+
+register.py
