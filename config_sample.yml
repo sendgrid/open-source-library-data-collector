@@ -1,25 +1,10 @@
 # The GitHub user that owns the repos you want to examine
 github_user:
- - sendgrid
+ - <github-username>
 
 # List all the repos to grab data from
 github_repos:
- - sendgrid-csharp
- - smtpapi-csharp
- - sendgrid-python
- - smtpapi-python
- - sendgrid-nodejs
- - smtpapi-nodejs
- - nodemailer-sendgrid-transport
- - sendgrid-php
- - smtpapi-php
- - sendgrid-ruby
- - smtpapi-ruby
- - sendgrid-go
- - smtpapi-go
- - sendgrid-java
- - smtpapi-java
- - docs
+ - <repo-name>
 
 # Thee package managers this code supports
 package_manager_urls:
