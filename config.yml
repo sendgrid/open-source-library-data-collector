@@ -25,6 +25,8 @@ github_repos:
  - php-http-client
  - sendgrid-swagger
  - docs
+ - rest
+ - open-source-library-data-collector
 
 # The following represents the package managers this code supports
 package_manager_urls:
@@ -35,6 +37,7 @@ package_manager_urls:
  - https://packagist.org/packages/sendgrid/php-http-client
  - https://pypi.python.org/pypi/sendgrid
  - https://pypi.python.org/pypi/python_http_client
+ - https://pypi.python.org/pypi/open_source_library_data_collector
  - https://rubygems.org/gems/sendgrid-ruby
  - https://rubygems.org/gems/ruby_http_client
 
