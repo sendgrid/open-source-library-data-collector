@@ -27,12 +27,14 @@ github_repos:
  - docs
  - rest
  - open-source-library-data-collector
+ - node-rest-client
 
 # The following represents the package managers this code supports
 package_manager_urls:
  - https://www.nuget.org/packages/SendGrid
  - https://www.nuget.org/packages/SendGrid.CSharp.HTTP.Client
  - https://www.npmjs.com/package/sendgrid
+ - https://www.npmjs.com/package/sendgrid-rest
  - https://packagist.org/packages/sendgrid/sendgrid
  - https://packagist.org/packages/sendgrid/php-http-client
  - https://pypi.python.org/pypi/sendgrid
