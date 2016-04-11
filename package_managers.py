@@ -46,7 +46,8 @@ class PackageManagers(object):
             if 'https://www.nuget.org/packages/SendGrid.CSharp.HTTP.Client' == url:
                 num_csharp_http_client_downloads = self.csharp_downloads(url)
             if 'https://www.npmjs.com/package/sendgrid' in url:
-                num_nodejs_monthly_downloads = self.nodejs_downloads(url)
+                if 'https://www.npmjs.com/package/sendgrid-rest' != url:
+                    num_nodejs_monthly_downloads = self.nodejs_downloads(url)
             if 'https://www.npmjs.com/package/sendgrid-rest' in url:
                 num_node_http_client_downloads = self.nodejs_downloads(url)
             if 'https://packagist.org/packages/sendgrid/sendgrid' == url:
