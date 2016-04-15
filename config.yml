@@ -28,6 +28,7 @@ github_repos:
  - rest
  - open-source-library-data-collector
  - nodejs-http-client
+ - java-http-client
 
 # The following represents the package managers this code supports
 package_manager_urls:
