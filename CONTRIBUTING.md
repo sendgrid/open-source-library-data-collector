@@ -1,49 +1,32 @@
-Hello! Thank you for choosing to help contribute to open-source-library-data-collector. There are many ways you can contribute and help is always welcome.
+Hello! Thank you for choosing to help contribute to one of the SendGrid open source projects. There are many ways you can contribute and help is always welcome.  We simply ask that you follow the following contribution policies.
 
+- [CLAs and CCLAs](#cla)
+- [Roadmap & Milestones](#roadmap)
+- [Feature Request](#feature_request)
+- [Submit a Bug Report](#submit_a_bug_report)
+- [Improvements to the Codebase](#improvements_to_the_codebase)
+- [Understanding the Code Base](#understanding_the_codebase)
+- [Testing](#testing)
+- [Style Guidelines & Naming Conventions](#style_guidelines_and_naming_conventions)
+- [Creating a Pull Request](#creating_a_pull_request)
+
+<a name="roadmap"></a>
 We use [Milestones](https://github.com/sendgrid/open-source-library-data-collector/milestones) to help define current roadmaps, please feel free to grab an issue from the current milestone. Please indicate that you have begun work on it to avoid collisions. Once a PR is made, community review, comments, suggestions and additional PRs are welcomed and encouraged.
 
-To get started, there are a few ways to contribute, which we'll enumerate below:
+<a name="cla"></a>
+## CLAs and CCLAs
 
-## Submit a Bug Report
+Before you get started, SendGrid requires that a SendGrid Contributor License Agreement (CLA) or a SendGrid Company Contributor Licensing Agreement (CCLA) be filled out by every contributor to a SendGrid open source project.
 
+Our goal with the CLA and CCLA is to clarify the rights of our contributors and reduce other risks arising from inappropriate contributions.  The CLA also clarifies the rights SendGrid holds in each contribution and helps to avoid misunderstandings over what rights each contributor is required to grant to SendGrid when making a contribution.  In this way the CLA and CCLA encourage broad participation by our open source community and help us build strong open source projects, free from any individual contributor withholding or revoking rights to any contribution.
 
-Note: DO NOT include your credentials in ANY code examples, descriptions, or media you make public.
+SendGrid does not merge a pull request made against a SendGrid open source project until that pull request is associated with a signed CLA (or CCLA). Copies of the CLA and CCLA are available [here](https://drive.google.com/a/sendgrid.com/file/d/0B0PlcM9qA91LN2VEUTJWU2RIVXc/view).
 
-A software bug is a demonstrable issue in the code base. In order for us to diagnose the issue and respond as quickly as possible, please add as much detail as possible into your bug report. 
+You may submit your completed [CLA or CCLA](https://drive.google.com/a/sendgrid.com/file/d/0B0PlcM9qA91LN2VEUTJWU2RIVXc/view) to SendGrid at [dx@sendgrid.com](mailto:dx@sendgrid.com).  SendGrid will then confirm you are ready to begin making contributions.
 
-Before you decide to create a new issue, please try the following:
+There are a few ways to contribute, which we'll enumerate below:
 
-0. Please **don't** use the issue tracker for personal/implementation issues. Feel free to [email](mailto:dx@sendgrid.com) us instead
-1. Check the Github issues tab if the identified issue has already been reported
-2. Update to the latest version of this code and check if issue has already been fixed
-3. Copy and fill in the Bug Report Template we have provided below
-
-### Please use our Bug Report Template
-
-In order to make the process easier, we've included a sample bug report template (borrowed from [Ghost](https://github.com/TryGhost/Ghost/)). The template uses [GitHub flavored markdown](https://help.github.com/articles/github-flavored-markdown/) for formatting.
-
-```
-Short and descriptive example bug report title
-
-#### Issue Summary
-
-A summary of the issue and the environment in which it occurs. If suitable, include the steps required to reproduce the bug. Please feel free to include screenshots, screencasts, code examples.
-
-
-#### Steps to Reproduce
-
-1. This is the first step
-2. This is the second step
-3. Further steps, etc.
-
-Any other information you want to share that is relevant to the issue being reported. Especially, why do you consider this to be a bug? What do you expect to happen instead?
-
-#### Technical details:
-
-* open-source-library-data-collector Version: master (latest commit: 2cb34372ef0f31352f7c90015a45e1200cb849da)
-* Python Version: X.X.X
-```
-
+<a name="feature_request"></a>
 ## Feature Request
 
 If you'd like to make a feature request, please read this section.
@@ -53,22 +36,41 @@ The GitHub issue tracker is the preferred channel for library feature requests, 
 - Please **search for existing issues** in order to ensure we don't have duplicate bugs/feature requests.
 - Please be respectful and considerate of others when commenting on issues
 
+<a name="submit_a_bug_report"></a>
+## Submit a Bug Report
+
+Note: DO NOT include your credentials in ANY code examples, descriptions, or media you make public.
+
+A software bug is a demonstrable issue in the code base. In order for us to diagnose the issue and respond as quickly as possible, please add as much detail as possible into your bug report.
+
+Before you decide to create a new issue, please try the following:
+
+1. Check the Github issues tab if the identified issue has already been reported, if so, please add a +1 to the existing post.
+2. Update to the latest version of this code and check if issue has already been fixed
+3. Copy and fill in the Bug Report Template we have provided below
+
+### Please use our Bug Report Template
+
+In order to make the process easier, we've included a [sample bug report template](https://github.com/sendgrid/open-source-library-data-collector/.github/ISSUE_TEMPLATE) (borrowed from [Ghost](https://github.com/TryGhost/Ghost/)). The template uses [GitHub flavored markdown](https://help.github.com/articles/github-flavored-markdown/) for formatting.
+
+<a name="improvements_to_the_codebase"></a>
 ## Improvements to the Codebase
 
 We welcome direct contributions to the open-source-library-data-collector code base. Thank you!
 
 ### Development Environment ###
 
-#### Install and run locally ####
+#### Install and Run Locally ####
 
 ##### Prerequisites #####
 
-* [virtualenv](https://pypi.python.org/pypi/virtualenv)
-* [mysql](https://www.mysql.com)
+- The SendGrid Service, starting at the [free level](https://sendgrid.com/free?source=open-source-data-collector))
+- [virtualenv](https://pypi.python.org/pypi/virtualenv)
+- [mysql](https://www.mysql.com)
 
 ##### Initial setup: #####
 
-```
+```bash
 git clone https://github.com/sendgrid/open-source-library-data-collector.git
 cd open-source-library-data-collector
 virtualenv venv
@@ -76,25 +78,41 @@ cp .env_sample .env
 ```
 
 Update your settings in `.env`
-```
-mysql -u USERNAME -p -e "CREATE DATABASE IF NOT EXISTS open-source-external-library-data"; 
+
+```bash
+mysql -u USERNAME -p -e "CREATE DATABASE IF NOT EXISTS open-source-external-library-data";
 mysql -u USERNAME -p open-source-external-library-data < db/data_schema.sql
 cp config_sample.yml config.yml
 ```
+
 Update the settings in `config.yml`
-```
+
+```bash
 source venv/bin/activate
 pip install -r requirements.txt
 ```
 
+## Environment Variables
+
+First, get your free SendGrid account [here](https://sendgrid.com/free?source=open-source-library-data-collector).
+
+Next, update your environment with your [SENDGRID_API_KEY](https://app.sendgrid.com/settings/api_keys).
+
+```bash
+echo "export SENDGRID_API_KEY='YOUR_API_KEY'" > sendgrid.env
+echo "sendgrid.env" >> .gitignore
+source ./sendgrid.env
+```
+
 ##### Execute: #####
 
-```
+```bash
 source venv/bin/activate
 python app.py
 ```
 
-## Understanding the Code Base ##
+<a name="understanding_the_codebase"></a>
+## Understanding the Code Base
 
 **app.py**
 
@@ -102,7 +120,7 @@ This is the entry point of this code. It grabs the GitHub and PackageManager dat
 
 **config.yml**
 
-Define all non-private configuration variables here. 
+Define all non-private configuration variables here.
 
 **.env**
 
@@ -124,22 +142,29 @@ Scrapes various package manager web pages to obtain your library's download data
 
 Send email through SendGrid.
 
+<a name="testing"></a>
 ## Testing
 
-All PRs require passing tests before the PR will be reviewed. 
+All PRs require passing tests before the PR will be reviewed.
 
-### Prequisites: ###
+All test files are in the [`test`](https://github.com/sendgrid/open-source-library-data-collector/tree/master/test) directory.
+
+For the purposes of contributing to this repo, please update the [`test.py`](https://github.com/sendgrid/open-source-library-data-collector/blob/master/test/test.py) file with unit tests as you modify the code.
+
+All PRs require passing tests before the PR will be reviewed.
+
+### Prequisites
 
 The above local "Initial setup" is complete
 
-* [pyenv](https://github.com/yyuu/pyenv)
-* [tox](https://pypi.python.org/pypi/tox)
- 
-### Initial setup: ###
+- [pyenv](https://github.com/yyuu/pyenv)
+- [tox](https://pypi.python.org/pypi/tox)
+
+### Initial Setup
 
 Add eval "$(pyenv init -)" to your .profile after installing tox, you only need to do this once.
 
-```
+```bash
 pyenv install 3.2.6
 pyenv install 3.3.6
 pyenv install 3.4.3
@@ -147,24 +172,27 @@ pyenv install 3.5.0
 python setup.py install
 pyenv local 3.5.0 3.4.3 3.3.6 3.2.6 2.7.8 2.6.9
 pyenv rehash
-````
+```
 
 ### Execute: ###
 
-```
+```bash
 source venv/bin/activate
 tox
 ```
-
+<a name="style_guidelines_and_naming_conventions"></a>
 ## Style Guidelines & Naming Conventions
 
 Generally, we follow the style guidelines as suggested by the official language. However, we ask that you conform to the styles that already exist in the library. If you wish to deviate, please explain your reasoning.
 
-* [PEP8](https://www.python.org/dev/peps/pep-0008/)
+- [PEP8](https://www.python.org/dev/peps/pep-0008/)
 
-Please run your code through [pyflakes](https://pypi.python.org/pypi/pyflakes) and [pep8](https://pypi.python.org/pypi/pep8)
+Please run your code through:
 
-## Creating a Pull Request
+- [pyflakes](https://pypi.python.org/pypi/pyflakes)
+- [pep8](https://pypi.python.org/pypi/pep8)
+
+## Creating a Pull Request<a name="creating_a_pull_request"></a>
 
 1. [Fork](https://help.github.com/fork-a-repo/) the project, clone your fork,
    and configure the remotes:
@@ -173,7 +201,7 @@ Please run your code through [pyflakes](https://pypi.python.org/pypi/pyflakes) a
    # Clone your fork of the repo into the current directory
    git clone https://github.com/sendgrid/open-source-library-data-collector
    # Navigate to the newly cloned directory
-   cd open-source-library-data-collector
+   cd sendgrid-python
    # Assign the original repo to a remote called "upstream"
    git remote add upstream https://github.com/sendgrid/open-source-library-data-collector
    ```
