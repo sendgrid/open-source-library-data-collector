@@ -14,7 +14,14 @@ def getRequires():
             'python-dateutil',
             'sqlalchemy',
             'datetime',
-            'pyyaml']
+            'pyyaml',
+            'six',
+            'wheel',
+            'zope.interface',
+            'uritemplate',
+            'uritemplate.py',
+            'pytz',
+            'python-http-client']
     if (3, 0) <= sys.version_info < (3, 2):
         deps.append('pymysql3')
     elif (3, 3) <= sys.version_info < (3, 6):
