@@ -1,6 +1,8 @@
 beautifulsoup4==4.5.1
 DateTime==4.1.1
 github3.py==0.9.6
+pandoc==1.0.0b2
+ply==3.9
 PyMySQL==0.7.9
 python-dateutil==2.5.3
 python-http-client==2.2.1
