@@ -1,5 +1,6 @@
 import os
 import sendgrid
+from sendgrid.helpers.mail import *
 from bs4 import BeautifulSoup
 
 
@@ -10,7 +11,7 @@ class SendGrid(object):
             sendgrid_api_key = os.environ.get('SENDGRID_API_KEY')
         else:
             sendgrid_api_key = os.environ['SENDGRID_API_KEY']
-        self.sg = sendgrid.SendGridClient(sendgrid_api_key)
+        self.sg = sendgrid.SendGridAPIClient(apikey=sendgrid_api_key)
 
     def send_email(self, to_email, from_email, subject, body):
         """Send the email
@@ -29,12 +30,12 @@ class SendGrid(object):
                 :returns: HTML status code and JSON message from SendGrid's API
                 :rtype: Integer, JSON
         """
-        message = sendgrid.Mail()
-        message.add_to(to_email)
-        message.set_subject(subject)
-        message.set_html(body)
+        from_email = Email(from_email)
+        subject = subject
+        to_email = Email(to_email)
         soup = BeautifulSoup(body, "html.parser")
-        message.set_text(soup.get_text())
-        message.set_from(from_email)
-        status, msg = self.sg.send(message)
-        return status, msg
+        content = Content("text/plain", soup.get_text())
+        mail = Mail(from_email, subject, to_email, content)
+        response = self.sg.client.mail.send.post(request_body=mail.get())
+
+        return response.status_code, response.body

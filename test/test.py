@@ -21,7 +21,7 @@ class TestConfig(unittest.TestCase):
         if os.environ.get('TRAVIS') == None:
             self.config = Config()
 
-    def test_initialization(self):        
+    def test_initialization(self):
         if os.environ.get('TRAVIS') == None:
             github_token = os.environ.get('GITHUB_TOKEN')
             self.assertTrue(isinstance(github_token, basestring))
@@ -137,8 +137,7 @@ class TestSendGridEmail(unittest.TestCase):
                 self.config.email_subject,
                 self.config.email_body
                 )
-            self.assertEqual(200, res[0])
-            self.assertEqual('{"message":"success"}', res[1].decode("utf-8"))
+            self.assertEqual(202, res[0])
 
 if __name__ == '__main__':
     unittest.main()
