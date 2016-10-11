@@ -1,0 +1,8 @@
+{
+  "name": "OSS library and data collector",
+  "description": "Quickly and easily store data about your open source projects on GitHub and various Package Managers.",
+  "image": "heroku/python",
+  "repository": "https://github.com/sendgrid/open-source-library-data-collector",
+  "keywords": ["python", "heroku", "open-source", "sendgrid"],
+  "addons": [ "cleardb:ignite" ]
+}
