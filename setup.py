@@ -38,7 +38,7 @@ setup(
     packages=find_packages(),
     license='MIT',
     description='Periodically capture external data relating to GitHub hosted Open Source libraries',
-    long_description='Check out the README at GitHub',
+    long_description=long_description,
     install_requires=getRequires(),
     keywords=[
         'GitHub',
