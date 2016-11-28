@@ -206,16 +206,11 @@ class PackageManagers(object):
         """
         packagedata = PackageManagerData(
             date_updated=datetime.datetime.now(),
-            csharp_downloads=num_total_csharp_downloads,
-            nodejs_downloads=num_nodejs_monthly_downloads,
-            php_downloads=num_php_downloads,
-            python_downloads=num_python_downloads,
-            ruby_downloads=num_ruby_downloads,
-            python_http_client_downloads=num_python_http_client_downloads,
-            csharp_http_client_downloads=num_csharp_http_client_downloads,
-            ruby_http_client_downloads=num_ruby_http_client_downloads,
-            php_http_client_downloads=num_php_http_client_downloads,
-            open_source_library_data_collector_downloads=num_python_open_source_library_data_collector_downloads,
-            node_http_client_downloads=num_node_http_client_downloads
+            csharp_downloads=int(num_total_csharp_downloads),
+            nodejs_downloads=int(num_nodejs_monthly_downloads),
+            ruby_downloads=int(num_ruby_downloads),
+            csharp_http_client_downloads=int(num_csharp_http_client_downloads),
+            ruby_http_client_downloads=int(num_ruby_http_client_downloads),
+            node_http_client_downloads=int(num_node_http_client_downloads)
             )
         return self.db.add_data(packagedata)
