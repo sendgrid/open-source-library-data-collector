@@ -35,16 +35,21 @@ class PackageManagers(object):
         num_python_downloads = None
         num_ruby_downloads = None
         num_python_http_client_downloads = None
+        num_python_open_source_library_data_collector_downloads = None
         num_ruby_http_client_downloads = None
         num_csharp_http_client_downloads = None
         num_php_http_client_downloads = None
+        num_node_http_client_downloads = None
         for url in package_manager_urls:
             if 'https://www.nuget.org/packages/SendGrid' == url:
                 num_total_csharp_downloads = self.csharp_downloads(url)
             if 'https://www.nuget.org/packages/SendGrid.CSharp.HTTP.Client' == url:
                 num_csharp_http_client_downloads = self.csharp_downloads(url)
-            if 'npmjs' in url:
-                num_nodejs_monthly_downloads = self.nodejs_downloads(url)
+            if 'https://www.npmjs.com/package/sendgrid' in url:
+                if 'https://www.npmjs.com/package/sendgrid-rest' != url:
+                    num_nodejs_monthly_downloads = self.nodejs_downloads(url)
+            if 'https://www.npmjs.com/package/sendgrid-rest' in url:
+                num_node_http_client_downloads = self.nodejs_downloads(url)
             if 'https://packagist.org/packages/sendgrid/sendgrid' == url:
                 num_php_downloads = self.php_downloads(url)
             if 'https://packagist.org/packages/sendgrid/php-http-client' == url:
@@ -53,6 +58,8 @@ class PackageManagers(object):
                 num_python_downloads = self.python_downloads(url)
             if 'pypi' in url and 'python_http_client' in url:
                 num_python_http_client_downloads = self.python_downloads(url)
+            if 'pypi' in url and 'open_source_library_data_collector' in url:
+                num_python_open_source_library_data_collector_downloads = self.python_downloads(url)
             if 'rubygems' in url and 'sendgrid' in url:
                 num_ruby_downloads = self.ruby_downloads(url)
             if 'rubygems' in url and 'http' in url:
@@ -64,9 +71,11 @@ class PackageManagers(object):
                               num_python_downloads,
                               num_ruby_downloads,
                               num_python_http_client_downloads,
+                              num_python_open_source_library_data_collector_downloads,
                               num_ruby_http_client_downloads,
                               num_csharp_http_client_downloads,
-                              num_php_http_client_downloads)
+                              num_php_http_client_downloads,
+                              num_node_http_client_downloads)
 
     def csharp_downloads(self, url):
         """Gets library download data from nuget.org
@@ -173,9 +182,11 @@ class PackageManagers(object):
             num_python_downloads,
             num_ruby_downloads,
             num_python_http_client_downloads,
+            num_python_open_source_library_data_collector_downloads,
             num_ruby_http_client_downloads,
             num_csharp_http_client_downloads,
-            num_php_http_client_downloads
+            num_php_http_client_downloads,
+            num_node_http_client_downloads
             ):
         """Update the DB with the package manager data
 
@@ -194,15 +205,17 @@ class PackageManagers(object):
         :rtype:   Data object
         """
         packagedata = PackageManagerData(
-                                date_updated=datetime.datetime.now(),
-                                csharp_downloads=num_total_csharp_downloads,
-                                nodejs_downloads=num_nodejs_monthly_downloads,
-                                php_downloads=num_php_downloads,
-                                python_downloads=num_python_downloads,
-                                ruby_downloads=num_ruby_downloads,
-                                python_http_client_downloads=num_python_http_client_downloads,
-                                csharp_http_client_downloads=num_csharp_http_client_downloads,
-                                ruby_http_client_downloads=num_ruby_http_client_downloads,
-                                php_http_client_downloads=num_php_http_client_downloads
-                                )
+            date_updated=datetime.datetime.now(),
+            csharp_downloads=num_total_csharp_downloads,
+            nodejs_downloads=num_nodejs_monthly_downloads,
+            php_downloads=num_php_downloads,
+            python_downloads=num_python_downloads,
+            ruby_downloads=num_ruby_downloads,
+            python_http_client_downloads=num_python_http_client_downloads,
+            csharp_http_client_downloads=num_csharp_http_client_downloads,
+            ruby_http_client_downloads=num_ruby_http_client_downloads,
+            php_http_client_downloads=num_php_http_client_downloads,
+            open_source_library_data_collector_downloads=num_python_open_source_library_data_collector_downloads,
+            node_http_client_downloads=num_node_http_client_downloads
+            )
         return self.db.add_data(packagedata)

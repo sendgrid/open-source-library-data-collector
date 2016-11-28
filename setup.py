@@ -14,7 +14,14 @@ def getRequires():
             'python-dateutil',
             'sqlalchemy',
             'datetime',
-            'pyyaml']
+            'pyyaml',
+            'six',
+            'wheel',
+            'zope.interface',
+            'uritemplate',
+            'uritemplate.py',
+            'pytz',
+            'python-http-client']
     if (3, 0) <= sys.version_info < (3, 2):
         deps.append('pymysql3')
     elif (3, 3) <= sys.version_info < (3, 6):
@@ -24,14 +31,14 @@ def getRequires():
 base_url = 'https://github.com/sendgrid/'
 setup(
     name='open_source_library_data_collector',
-    version='1.0.0',
+    version='1.1.0',
     author='Elmer Thomas',
     author_email='dx@sendgrid.com',
     url=base_url + 'open-source-library-data-collector',
     packages=find_packages(),
     license='MIT',
     description='Periodically capture external data relating to GitHub hosted Open Source libraries',
-    long_description='Check out the README at GitHub',
+    long_description=long_description,
     install_requires=getRequires(),
     keywords=[
         'GitHub',

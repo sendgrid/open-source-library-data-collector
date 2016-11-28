@@ -7,16 +7,16 @@ python:
 - '3.4'
 - '3.5'
 install:
-- python setup.py install
-script: 
+- pip install -r requirements.txt
+script:
 - python -m unittest discover
 notifications:
   hipchat:
     rooms:
-      secure: Lo3L/YNWpn9ulGX4D2HlWrBOyxMPlLkFcwxbYViG69Ta6BV+c6YE+Pct43tExlL6sZ+nj5p8X4KRTeOM4sqASrebWA25nyUrNTm+vZYFbi5XfmGvvi8TEsgg0MYRQRWWn/R2z0kZW/fqOY6sqJuoIafMBmC3tayTJRiH1Ct2Cw0=
+      secure: RqD0sjD13cmbwudrApoVwkTJaNN8WuiugjzZFwZoMU110NNHfpw5FKQcyPhPFTNGqSfM3oGB2wsUcaGJUrMKgTXRjtRvwN1xf1OAv1mVYxR67Ghs7s0K12yqDsexExdZM/Vtab1f2RzOBZ3SAnU57irvRT+LZ4LRWcfvPfN1SihOKP3YBv3Jcqtt5p09dyoIheIseVJcyRBoTBoh8DG/a2kohAu+faoY1gjtI3CWIKRncKhe6tpGY4lVzpDETkSWLy7gxmlNPch9okFjo1S5IClN6CyCg5SaFiB9/4SJGBkt6ySF+M41eIqKIZIq2KQerQvoiE6ySVzntEaw0VIWA5SYm7PtESBFIaQnjeE8a3sddqwBZkaknms20FCt+ozN/aJ+Gj205lgR/i34OA1qIdxm9AkPlISv+AX5ur+T5IOyLOmOBmh3uKLTTUHuYBk2s1whReOgPp4Pmuo1bOGHIr9cdCEZ9hFYwUDAsRgacIb+uEpJTUJkCjaVzn8ZNTgKdcmy7uEodwD2MS1qMaQH+FjgPz9jJOuvdvwmZdIWD11tFenSMrPvrlEag+Mqnz3xkInIts+CT4vyUoELJ5iKbF8fdec+hy9ip3mIQ2UmVWYTcpKi/x9tUR+NK7QFtIkBAGPDzVeIx//TxWGpg48GeUB8EUtORkxk3xxRj/kxUxc=
     template:
     - '<a href="https://travis-ci.org/%{repository}/builds/%{build_id}">%{repository}
       Build %{build_number}</a> on branch <i>%{branch}</i> by %{author}: <strong>%{message}</strong>
-      <a href="https://github.com/sendgrid/%{repository}/commits/%{commit}">View on GitHub</a>'
+      <a href="https://github.com/%{repository}/commits/%{commit}">View on GitHub</a>'
     format: html
     notify: false

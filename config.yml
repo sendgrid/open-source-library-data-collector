@@ -25,16 +25,22 @@ github_repos:
  - php-http-client
  - sendgrid-swagger
  - docs
+ - rest
+ - open-source-library-data-collector
+ - nodejs-http-client
+ - java-http-client
 
 # The following represents the package managers this code supports
 package_manager_urls:
  - https://www.nuget.org/packages/SendGrid
  - https://www.nuget.org/packages/SendGrid.CSharp.HTTP.Client
  - https://www.npmjs.com/package/sendgrid
+ - https://www.npmjs.com/package/sendgrid-rest
  - https://packagist.org/packages/sendgrid/sendgrid
  - https://packagist.org/packages/sendgrid/php-http-client
  - https://pypi.python.org/pypi/sendgrid
  - https://pypi.python.org/pypi/python_http_client
+ - https://pypi.python.org/pypi/open_source_library_data_collector
  - https://rubygems.org/gems/sendgrid-ruby
  - https://rubygems.org/gems/ruby_http_client
 
