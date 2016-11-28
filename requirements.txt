@@ -13,7 +13,6 @@ sendgrid==3.6.3
 six==1.10.0
 SQLAlchemy==1.1.4
 tox==2.5.0
-uritemplate==3.0.0
 uritemplate.py==3.0.2
 virtualenv==15.1.0
 wheel==0.24.0
