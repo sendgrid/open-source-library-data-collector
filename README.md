@@ -24,7 +24,7 @@ source ./sendgrid.env
 
 ```bash
 git clone https://github.com/sendgrid/open-source-library-data-collector.git
-cd sendgrid-open-source-library-external-data
+cd open-source-library-external-data
 virtualenv venv
 cp .env_sample .env
 ```

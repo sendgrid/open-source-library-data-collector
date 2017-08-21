@@ -1,5 +1,6 @@
 import requests
 import datetime
+import re
 from bs4 import BeautifulSoup
 from db_connector import DBConnector, PackageManagerData
 import sys
@@ -88,11 +89,11 @@ class PackageManagers(object):
         """
         r = requests.get(url)
         soup = BeautifulSoup(r.text, "html.parser")
-        mydivs = soup.findAll("p", {"class": "stat-number"})
-        nodes = []
-        for node in mydivs:
-            nodes.append(''.join(node.findAll(text=True)))
-        num_total_csharp_downloads = nodes[0].replace(',', '')
+        pattern = re.compile(r'total downloads')
+        lines = soup.find(text=pattern).__dict__['parent']
+        num_total_csharp_downloads = str(lines)[:-39]
+        num_total_csharp_downloads = num_total_csharp_downloads[-9:]
+        num_total_csharp_downloads = num_total_csharp_downloads.replace(',', '')
         return num_total_csharp_downloads
 
     def nodejs_downloads(self, url):
