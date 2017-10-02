@@ -39,11 +39,17 @@ class TestConfig(unittest.TestCase):
             self.assertTrue(isinstance(self.config.email_body, basestring))
 
     def test_mysql_db_connection_string(self):
+        if os.environ.get('TRAVIS'):
+            return
+
         mysql_str = 'mysql://user:pass@host:port/dbname'
         connection_string = get_db_connection_string(mysql_str)
         self.assertEqual(connection_string, 'mysql+pymysql://user:pass@host:port/dbname')
 
     def test_sqllite_db_connection_string(self):
+        if os.environ.get('TRAVIS'):
+            return
+
         # in memory
         sqllite = 'sqlite://'
         connection_string = get_db_connection_string(sqllite)
