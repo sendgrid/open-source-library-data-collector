@@ -5,7 +5,8 @@ try:
 except ImportError:
     import unittest
 if os.environ.get('TRAVIS') is None:
-    from db_connector import DBConnector, GitHubData, PackageManagerData
+    from db_connector import (DBConnector, GitHubData, PackageManagerData,
+                              get_db_connection_string,)
     from config import Config
     from github import GitHub
     from package_managers import PackageManagers
@@ -27,16 +28,8 @@ class TestConfig(unittest.TestCase):
             self.assertTrue(isinstance(github_token, basestring))
             sendgrid_api_key = os.environ.get('SENDGRID_API_KEY')
             self.assertTrue(isinstance(sendgrid_api_key, basestring))
-            mysql_db = os.environ.get('MYSQL_DB')
+            mysql_db = os.environ.get('MYSQL_DB_URL')
             self.assertTrue(isinstance(mysql_db, basestring))
-            mysql_host = os.environ.get('MYSQL_HOST')
-            self.assertTrue(isinstance(mysql_host, basestring))
-            mysql_username = os.environ.get('MYSQL_USERNAME')
-            self.assertTrue(isinstance(mysql_username, basestring))
-            mysql_password = os.environ.get('MYSQL_PASSWORD')
-            self.assertTrue(isinstance(mysql_password, basestring))
-            mysql_port = os.environ.get('MYSQL_PORT')
-            self.assertTrue(isinstance(mysql_port, basestring))
             self.assertTrue(isinstance(self.config.github_user, basestring))
             self.assertTrue(isinstance(self.config.github_repos, list))
             self.assertTrue(isinstance(self.config.package_manager_urls, list))
@@ -44,6 +37,27 @@ class TestConfig(unittest.TestCase):
             self.assertTrue(isinstance(self.config.from_email, basestring))
             self.assertTrue(isinstance(self.config.email_subject, basestring))
             self.assertTrue(isinstance(self.config.email_body, basestring))
+
+    def test_mysql_db_connection_string(self):
+        mysql_str = 'mysql://user:pass@host:port/dbname'
+        connection_string = get_db_connection_string(mysql_str)
+        self.assertEqual(connection_string, 'mysql+pymysql://user:pass@host:port/dbname')
+
+    def test_sqllite_db_connection_string(self):
+        # in memory
+        sqllite = 'sqlite://'
+        connection_string = get_db_connection_string(sqllite)
+        self.assertEqual(connection_string, 'sqlite://')
+
+        # relative
+        sqllite = 'sqlite:///foo.db'
+        connection_string = get_db_connection_string(sqllite)
+        self.assertEqual(connection_string, 'sqlite:///foo.db')
+
+        # absolute
+        sqllite = 'sqlite:////foo.db'
+        connection_string = get_db_connection_string(sqllite)
+        self.assertEqual(connection_string, 'sqlite:////foo.db')
 
 
 class TestDBConnector(unittest.TestCase):
