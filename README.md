@@ -4,7 +4,7 @@
 
 # Announcements
 
-All updates to this project is documented in our [CHANGELOG](https://github.com/sendgrid/open-source-library-data-collector/blob/master/CHANGELOG.md).
+All updates to this project are documented in our [CHANGELOG](https://github.com/sendgrid/open-source-library-data-collector/blob/master/CHANGELOG.md).
 
 # Installation
 
@@ -44,7 +44,7 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-Update the code in `package_managers.py`. The functions `update_package_manager_data` and `update_db` was customized for our particular needs. You will want to either subclass those functions in your own application or modify it to suit your needs. We will remove these customizations in a future release. [Here is the GitHub issue](https://github.com/sendgrid/open-source-library-data-collector/issues/5) for reference.
+Update the code in `package_managers.py`. The functions `update_package_manager_data` and `update_db` were customized for our particular needs. You will want to either subclass those functions in your own application or modify it to suit your needs. We will remove these customizations in a future release. [Here is the GitHub issue](https://github.com/sendgrid/open-source-library-data-collector/issues/5) for reference.
 
 To run:
 
@@ -55,7 +55,7 @@ python app.py
 
 ## Dependencies
 
-- The SendGrid Service, starting at the [free level](https://sendgrid.com/free?source=open-source-data-collector))
+- The SendGrid Service, starting at the [free level](https://sendgrid.com/free?source=open-source-data-collector)
 - [virtualenv](https://pypi.python.org/pypi/virtualenv)
 - [mysql](https://www.mysql.com)
 
