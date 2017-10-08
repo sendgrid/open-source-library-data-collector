@@ -7,6 +7,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 from config import Config
+from utils import write_records_to_csv
 
 if (os.environ.get('ENV') != 'prod'):  # We are not in Heroku
     Config.init_environment()
@@ -110,7 +111,30 @@ class DBConnector(object):
             return True
         elif table == 'package_manager_data':
             res = self.session.query(PackageManagerData) \
-                    .filter(PackageManagerData.id == id).delete()
+                .filter(PackageManagerData.id == id).delete()
             self.session.commit()
             return True
         return False
+
+    def export_table_to_csv(self, data_object, header=True):
+        """Write CSV to local directory of table, using table name as filename.
+        :param data_object: An object that represents a table in the DB
+        :type data_object:  Object
+
+        :param header: If true, include column names as first row.
+        :type header:  Bool
+
+        :returns:   True if succeeded
+        :rtype:     Bool
+        """
+        column_names = [col.name for col in data_object.__mapper__.columns]
+        records = self.get_data(data_object)
+        rows = []
+
+        # Convert SQLAlchemy Objects to a list of strings
+        for record in records:
+            rows.append([getattr(record, col) for col in column_names])
+
+        table_name = data_object.__tablename__
+        filename = "{}.csv".format(table_name)
+        write_records_to_csv(filename, rows, column_names)
