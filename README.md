@@ -29,7 +29,7 @@ virtualenv venv
 cp .env_sample .env
 ```
 
-Update your settings in `.env`
+Update your settings in `.env`. You will need a Github API Token from [here](https://github.com/settings/tokens). Make sure your token has access to read public repositories.
 
 ```bash
 mysql -u USERNAME -p -e "CREATE DATABASE IF NOT EXISTS open-source-library-data-collector";
@@ -52,6 +52,8 @@ To run:
 source venv/bin/activate
 python app.py
 ```
+
+If you enabled CSV exports in your `config.yml`, those files will appear under the `csv/` directory in the project repository.
 
 ## Dependencies
 
