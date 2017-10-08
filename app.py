@@ -1,4 +1,4 @@
-from db_connector import DBConnector
+from db_connector import DBConnector, GitHubData, PackageManagerData
 from config import Config
 from github import GitHub
 from package_managers import PackageManagers
@@ -16,6 +16,12 @@ for repo in config.github_repos:
 
 # Update the DB with Package Manager data
 pm.update_package_manager_data(config.package_manager_urls)
+
+# Export tables as CSV if config file indicates to do so
+if config['export_tables']['Github']:
+    db.export_table_to_csv(GitHubData)
+if config['export_tables']['PackageManagers']:
+    db.export_table_to_csv(PackageManagerData)
 
 # Send an email update
 sg.send_email(config.to_email,
