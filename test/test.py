@@ -152,12 +152,14 @@ class TestExportTable(unittest.TestCase):
             self.filename = "./csv/{}.csv".format(GitHubData.__tablename__)
 
     def test_file_export_succeeds(self):
-        self.assertFalse(os.path.exists(self.filename))
-        self.db.export_table_to_csv(GitHubData)
-        self.assertTrue(os.path.exists(self.filename))
+        if os.environ.get('TRAVIS') == None:
+            self.assertFalse(os.path.exists(self.filename))
+            self.db.export_table_to_csv(GitHubData)
+            self.assertTrue(os.path.exists(self.filename))
 
     def tearDown(self):
-        os.remove(self.filename)
+        if os.environ.get('TRAVIS') == None:
+            os.remove(self.filename)
 
 
 if __name__ == '__main__':
