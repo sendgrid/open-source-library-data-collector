@@ -18,7 +18,7 @@ for repo in config.github_repos:
 pm.update_package_manager_data(config.package_manager_urls)
 
 # Export tables as CSV if config file indicates to do so
-if config['export_tables']['Github']:
+if config.export_github:
     db.export_table_to_csv(GitHubData)
 if config['export_tables']['PackageManagers']:
     db.export_table_to_csv(PackageManagerData)
