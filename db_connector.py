@@ -83,7 +83,7 @@ class DBConnector(object):
         return res
 
     def get_data(self, data_object):
-        """Add an item to the DB
+        """Retrieve all rows from a table in the DB
         :param data_object: An object that represents a table in the DB
         :type data_object:  Object
 
