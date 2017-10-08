@@ -131,10 +131,10 @@ class DBConnector(object):
         records = self.get_data(data_object)
         rows = []
 
-        # Convert SQLAlchemy Objects to a list of strings
+        # Convert SQLAlchemy Objects to list of strings
         for record in records:
             rows.append([getattr(record, col) for col in column_names])
 
         table_name = data_object.__tablename__
-        filename = "{}.csv".format(table_name)
+        filename = "./csv/{}.csv".format(table_name)
         write_records_to_csv(filename, rows, column_names)

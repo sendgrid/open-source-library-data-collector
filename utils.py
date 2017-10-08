@@ -3,6 +3,7 @@ utils.py
 
 Utility functions for working with data
 """
+import os
 import csv
 
 
@@ -21,6 +22,9 @@ def write_records_to_csv(filepath, records, headers=None):
                     no header is written.
     :type headers: list
     """
+
+    # Create any intermediary folders if necessary, works in Python 3.2+
+    os.makedirs(os.path.dirname(filepath), exist_ok=True)
     with open(filepath, 'w') as fp:
         writer = csv.writer(fp)
         if headers:
