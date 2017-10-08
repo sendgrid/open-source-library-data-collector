@@ -139,5 +139,26 @@ class TestSendGridEmail(unittest.TestCase):
                 )
             self.assertEqual(202, res[0])
 
+
+class TestExportTable(unittest.TestCase):
+
+    def setUp(self):
+        if os.environ.get('TRAVIS') == None:
+            self.github = GitHub()
+            self.db = DBConnector()
+            self.config = Config()
+            self.github.update_library_data(self.config.github_user,
+                                            self.config.github_repos[0])
+            self.filename = "./csv/{}.csv".format(GitHubData.__tablename__)
+
+    def test_file_export_succeeds(self):
+        self.assertFalse(os.path.exists(self.filename))
+        self.db.export_table_to_csv(GitHubData)
+        self.assertTrue(os.path.exists(self.filename))
+
+    def tearDown(self):
+        os.remove(self.filename)
+
+
 if __name__ == '__main__':
     unittest.main()
