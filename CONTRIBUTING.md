@@ -153,7 +153,7 @@ For the purposes of contributing to this repo, please update the [`test.py`](htt
 
 All PRs require passing tests before the PR will be reviewed.
 
-### Prequisites
+### Prerequisites
 
 The above local "Initial setup" is complete
 
