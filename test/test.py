@@ -142,6 +142,12 @@ class TestSendGridEmail(unittest.TestCase):
 
 class TestExportTable(unittest.TestCase):
 
+    # Corresponds to schema in `db/data_schema.sql`
+    header_row = "id,date_updated,language,pull_requests,open_issues,"\
+                 "number_of_commits,number_of_branches,number_of_releases,"\
+                 "number_of_contributors,number_of_watchers,"\
+                 "number_of_stargazers,number_of_forks\n"
+
     def setUp(self):
         if os.environ.get('TRAVIS') == None:
             self.github = GitHub()
@@ -156,6 +162,20 @@ class TestExportTable(unittest.TestCase):
             self.assertFalse(os.path.exists(self.filename))
             self.db.export_table_to_csv(GitHubData)
             self.assertTrue(os.path.exists(self.filename))
+
+    def test_file_export_has_correct_data(self):
+        if os.environ.get('TRAVIS') == None:
+            self.db.export_table_to_csv(GitHubData)
+            with open(self.filename, 'r') as fp:
+                exported_data = fp.readlines()
+
+            # Table has correct header
+            self.assertEqual(exported_data[0], self.header_row)
+
+            # Table exported correct number of rows
+            num_exported_rows = len(exported_data) - 1  # exclude header
+            num_db_rows = len(self.db.get_data(GitHubData))
+            self.assertEqual(num_exported_rows, num_db_rows)
 
     def tearDown(self):
         if os.environ.get('TRAVIS') == None:
