@@ -32,8 +32,8 @@ cp .env_sample .env
 Update your settings in `.env`
 
 ```bash
-mysql -u USERNAME -p -e "CREATE DATABASE IF NOT EXISTS open-source-library-data-collector";
-mysql -u USERNAME -p open-source-external-library-data < db/data_schema.sql
+mysql -u USERNAME -p -e "CREATE DATABASE IF NOT EXISTS open_source_external_library_data_collector";
+mysql -u USERNAME -p open_source_external_library_data < db/data_schema.sql
 cp config_sample.yml config.yml
 ```
 
