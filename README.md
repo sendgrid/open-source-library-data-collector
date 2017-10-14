@@ -18,7 +18,7 @@ Next, update your environment with your [SENDGRID_API_KEY](https://app.sendgrid.
 
 ```bash
 git clone https://github.com/sendgrid/open-source-library-data-collector.git
-cd open-source-library-external-data
+cd open-source-library-data-collector
 virtualenv venv
 cp .env_sample .env
 ```
