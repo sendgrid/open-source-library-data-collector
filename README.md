@@ -1,4 +1,11 @@
+![SendGrid Logo](https://uiux.s3.amazonaws.com/2016-logos/email-logo%402x.png)
 [![Travis Badge](https://travis-ci.org/sendgrid/open-source-library-data-collector.svg?branch=master)](https://travis-ci.org/sendgrid/open-source-library-data-collector)
+[![BuildStatus](https://travis-ci.org/sendgrid/sendgrid-nodejs.svg?branch=master)](https://travis-ci.org/sendgrid/sendgrid-nodejs)
+[![Email Notifications Badge](https://dx.sendgrid.com/badge/nodejs)](https://dx.sendgrid.com/newsletter/nodejs)
+[![npm](https://img.shields.io/npm/l/express.svg)]()
+[![Twitter Follow](https://img.shields.io/twitter/follow/sendgrid.svg?style=social&label=Follow)](https://twitter.com/sendgrid)
+[![GitHub contributors](https://img.shields.io/github/contributors/sendgrid/sendgrid-nodejs.svg)](https://github.com/sendgrid/sendgrid-nodejs/graphs/contributors)
+[![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE.txt)
 
 **Quickly and easily store data about your open source projects on GitHub and various Package Managers.**
 
@@ -95,6 +102,10 @@ Quick links:
 - [Bug Reports](https://github.com/sendgrid/open-source-library-data-collector/blob/master/CONTRIBUTING.md#submit_a_bug_report)
 - [Sign the CLA to Create a Pull Request](https://github.com/sendgrid/open-source-library-data-collector/blob/master/CONTRIBUTING.md#cla)
 - [Improvements to the Codebase](https://github.com/sendgrid/open-source-library-data-collector/blob/master/CONTRIBUTING.md#improvements_to_the_codebase)
+- [License](#license)
+
+# License
+[The MIT License (MIT)](LICENSE.txt)
 
 # About
 
