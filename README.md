@@ -2,11 +2,11 @@
 
 
 [![Travis Badge](https://travis-ci.org/sendgrid/open-source-library-data-collector.svg?branch=master)](https://travis-ci.org/sendgrid/open-source-library-data-collector)
-[![BuildStatus](https://travis-ci.org/sendgrid/sendgrid-nodejs.svg?branch=master)](https://travis-ci.org/sendgrid/sendgrid-nodejs)
-[![Email Notifications Badge](https://dx.sendgrid.com/badge/nodejs)](https://dx.sendgrid.com/newsletter/nodejs)
+[![BuildStatus](https://travis-ci.org/sendgrid/open-source-library-data-collector.svg?branch=master)](https://travis-ci.org/sendgrid/open-source-library-data-collector)
+[![Email Notifications Badge](https://dx.sendgrid.com/badge/python)](https://dx.sendgrid.com/newsletter/python)
 [![npm](https://img.shields.io/npm/l/express.svg)]()
 [![Twitter Follow](https://img.shields.io/twitter/follow/sendgrid.svg?style=social&label=Follow)](https://twitter.com/sendgrid)
-[![GitHub contributors](https://img.shields.io/github/contributors/sendgrid/sendgrid-nodejs.svg)](https://github.com/sendgrid/sendgrid-nodejs/graphs/contributors)
+[![GitHub contributors](https://img.shields.io/github/contributors/sendgrid/open-source-library-data-collector.svg)](https://github.com/sendgrid/open-source-library-data-collector/graphs/contributors)
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE.txt)
 
 **Quickly and easily store data about your open source projects on GitHub and various Package Managers.**
