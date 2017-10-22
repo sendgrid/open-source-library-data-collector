@@ -6,6 +6,12 @@
 
 All updates to this project are documented in our [CHANGELOG](https://github.com/sendgrid/open-source-library-data-collector/blob/master/CHANGELOG.md).
 
+# Table of Contents
+- [Installation](#installation)
+- [Heroku Deploy](#heroku-deploy)
+- [About](#about)
+
+<a name="installation"></a>
 # Installation
 
 ## Environment Variables
@@ -61,6 +67,7 @@ python app.py
 - [virtualenv](https://pypi.python.org/pypi/virtualenv)
 - [mysql](https://www.mysql.com)
 
+<a name="heroku-deploy"></a>
 # Heroku Deploy
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
@@ -96,6 +103,7 @@ Quick links:
 - [Sign the CLA to Create a Pull Request](https://github.com/sendgrid/open-source-library-data-collector/blob/master/CONTRIBUTING.md#cla)
 - [Improvements to the Codebase](https://github.com/sendgrid/open-source-library-data-collector/blob/master/CONTRIBUTING.md#improvements_to_the_codebase)
 
+<a name="about"></a>
 # About
 
 open-source-library-data-collector is guided and supported by the SendGrid [Developer Experience Team](mailto:dx@sendgrid.com).
