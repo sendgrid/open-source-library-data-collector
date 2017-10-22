@@ -4,7 +4,7 @@
 
 # Announcements
 
-All updates to this project is documented in our [CHANGELOG](https://github.com/sendgrid/open-source-library-data-collector/blob/master/CHANGELOG.md).
+All updates to this project are documented in our [CHANGELOG](https://github.com/sendgrid/open-source-library-data-collector/blob/master/CHANGELOG.md).
 
 # Installation
 
@@ -17,36 +17,41 @@ Next, update your environment with your [SENDGRID_API_KEY](https://app.sendgrid.
 ## Initial Setup
 
 ```bash
-echo "export SENDGRID_API_KEY='YOUR_API_KEY'" > sendgrid.env
-echo "sendgrid.env" >> .gitignore
-source ./sendgrid.env
-```
-
-```bash
 git clone https://github.com/sendgrid/open-source-library-data-collector.git
-cd open-source-library-external-data
+cd open-source-library-data-collector
 virtualenv venv
 cp .env_sample .env
 ```
 
-Update your settings in `.env`. You will need a Github API Token from [here](https://github.com/settings/tokens). Make sure your token has access to read public repositories.
+Update the *environment variable* settings in the `.env` file.
+
+You will need a Github API Token from [here](https://github.com/settings/tokens). Make sure your token has access to read public repositories.
 
 ```bash
-mysql -u USERNAME -p -e "CREATE DATABASE IF NOT EXISTS open-source-library-data-collector";
-mysql -u USERNAME -p open-source-external-library-data < db/data_schema.sql
+cp .env_sample .env
+echo "export SENDGRID_API_KEY='YOUR_API_KEY'" > .env
+source ./.env
+```
+Then, create your database and a clean copy of the `config_sample.yml` file.
+
+```bash
+mysql -u USERNAME -p -e "CREATE DATABASE IF NOT EXISTS open_source_external_library_data";
+mysql -u USERNAME -p open_source_external_library_data < db/data_schema.sql
 cp config_sample.yml config.yml
 ```
 
-Update the settings in `config.yml`
+Update the settings in `config.yml` to match your specific project's needs before proceeding.
+
+Lastly, install python-specific requirements inside a virtual environment.
 
 ```bash
 source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-Update the code in `package_managers.py`. The functions `update_package_manager_data` and `update_db` was customized for our particular needs. You will want to either subclass those functions in your own application or modify it to suit your needs. We will remove these customizations in a future release. [Here is the GitHub issue](https://github.com/sendgrid/open-source-library-data-collector/issues/5) for reference.
+Update the code in `package_managers.py`. The functions `update_package_manager_data` and `update_db` were customized for our particular needs. You will want to either subclass those functions in your own application or modify it to suit your needs. We will remove these customizations in a future release. [Here is the GitHub issue](https://github.com/sendgrid/open-source-library-data-collector/issues/5) for reference.
 
-To run:
+**To run:**
 
 ```
 source venv/bin/activate
@@ -57,7 +62,7 @@ If you enabled CSV exports in your `config.yml`, those files will appear under t
 
 ## Dependencies
 
-- The SendGrid Service, starting at the [free level](https://sendgrid.com/free?source=open-source-data-collector))
+- The SendGrid Service, starting at the [free level](https://sendgrid.com/free?source=open-source-data-collector)
 - [virtualenv](https://pypi.python.org/pypi/virtualenv)
 - [mysql](https://www.mysql.com)
 

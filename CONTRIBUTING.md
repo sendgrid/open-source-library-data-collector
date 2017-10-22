@@ -2,13 +2,13 @@ Hello! Thank you for choosing to help contribute to one of the SendGrid open sou
 
 - [CLAs and CCLAs](#cla)
 - [Roadmap & Milestones](#roadmap)
-- [Feature Request](#feature_request)
-- [Submit a Bug Report](#submit_a_bug_report)
-- [Improvements to the Codebase](#improvements_to_the_codebase)
-- [Understanding the Code Base](#understanding_the_codebase)
+- [Feature Request](#feature-request)
+- [Submit a Bug Report](#submit-a-bug-report)
+- [Improvements to the Codebase](#improvements-to-the-codebase)
+- [Understanding the Code Base](#understanding-the-codebase)
 - [Testing](#testing)
-- [Style Guidelines & Naming Conventions](#style_guidelines_and_naming_conventions)
-- [Creating a Pull Request](#creating_a_pull_request)
+- [Style Guidelines & Naming Conventions](#style-guidelines-and-naming-conventions)
+- [Creating a Pull Request](#creating-a-pull-request)
 
 <a name="roadmap"></a>
 We use [Milestones](https://github.com/sendgrid/open-source-library-data-collector/milestones) to help define current roadmaps, please feel free to grab an issue from the current milestone. Please indicate that you have begun work on it to avoid collisions. Once a PR is made, community review, comments, suggestions and additional PRs are welcomed and encouraged.
@@ -26,7 +26,7 @@ When you create a Pull Request, after a few seconds, a comment will appear with 
 
 There are a few ways to contribute, which we'll enumerate below:
 
-<a name="feature_request"></a>
+<a name="feature-request"></a>
 ## Feature Request
 
 If you'd like to make a feature request, please read this section.
@@ -36,7 +36,7 @@ The GitHub issue tracker is the preferred channel for library feature requests, 
 - Please **search for existing issues** in order to ensure we don't have duplicate bugs/feature requests.
 - Please be respectful and considerate of others when commenting on issues
 
-<a name="submit_a_bug_report"></a>
+<a name="submit-a-bug-report"></a>
 ## Submit a Bug Report
 
 Note: DO NOT include your credentials in ANY code examples, descriptions, or media you make public.
@@ -51,9 +51,9 @@ Before you decide to create a new issue, please try the following:
 
 ### Please use our Bug Report Template
 
-In order to make the process easier, we've included a [sample bug report template](https://github.com/sendgrid/open-source-library-data-collector/.github/ISSUE_TEMPLATE) (borrowed from [Ghost](https://github.com/TryGhost/Ghost/)). The template uses [GitHub flavored markdown](https://help.github.com/articles/github-flavored-markdown/) for formatting.
+In order to make the process easier, we've included a [sample bug report template](.github/ISSUE_TEMPLATE.md) (borrowed from [Ghost](https://github.com/TryGhost/Ghost/)). The template uses [GitHub flavored markdown](https://help.github.com/articles/github-flavored-markdown/) for formatting.
 
-<a name="improvements_to_the_codebase"></a>
+<a name="improvements-to-the-codebase"></a>
 ## Improvements to the Codebase
 
 We welcome direct contributions to the open-source-library-data-collector code base. Thank you!
@@ -80,8 +80,8 @@ cp .env_sample .env
 Update your settings in `.env`
 
 ```bash
-mysql -u USERNAME -p -e "CREATE DATABASE IF NOT EXISTS open-source-external-library-data";
-mysql -u USERNAME -p open-source-external-library-data < db/data_schema.sql
+mysql -u USERNAME -p -e "CREATE DATABASE IF NOT EXISTS open_source_external_library_data";
+mysql -u USERNAME -p open_source_external_library_data < db/data_schema.sql
 cp config_sample.yml config.yml
 ```
 
@@ -111,7 +111,7 @@ source venv/bin/activate
 python app.py
 ```
 
-<a name="understanding_the_codebase"></a>
+<a name="understanding-the-codebase"></a>
 ## Understanding the Code Base
 
 **app.py**
@@ -153,7 +153,7 @@ For the purposes of contributing to this repo, please update the [`test.py`](htt
 
 All PRs require passing tests before the PR will be reviewed.
 
-### Prequisites
+### Prerequisites
 
 The above local "Initial setup" is complete
 
@@ -180,7 +180,7 @@ pyenv rehash
 source venv/bin/activate
 tox
 ```
-<a name="style_guidelines_and_naming_conventions"></a>
+<a name="style-guidelines-and-naming-conventions"></a>
 ## Style Guidelines & Naming Conventions
 
 Generally, we follow the style guidelines as suggested by the official language. However, we ask that you conform to the styles that already exist in the library. If you wish to deviate, please explain your reasoning.
@@ -192,7 +192,7 @@ Please run your code through:
 - [pyflakes](https://pypi.python.org/pypi/pyflakes)
 - [pep8](https://pypi.python.org/pypi/pep8)
 
-## Creating a Pull Request<a name="creating_a_pull_request"></a>
+## Creating a Pull Request<a name="creating-a-pull-request"></a>
 
 1. [Fork](https://help.github.com/fork-a-repo/) the project, clone your fork,
    and configure the remotes:
