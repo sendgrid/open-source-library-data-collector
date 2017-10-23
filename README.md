@@ -1,3 +1,5 @@
+![SendGrid Logo](https://uiux.s3.amazonaws.com/2016-logos/email-logo%402x.png)
+
 [![Travis Badge](https://travis-ci.org/sendgrid/open-source-library-data-collector.svg?branch=master)](https://travis-ci.org/sendgrid/open-source-library-data-collector)
 
 **Quickly and easily store data about your open source projects on GitHub and various Package Managers.**
@@ -9,7 +11,10 @@ All updates to this project are documented in our [CHANGELOG](https://github.com
 # Table of Contents
 - [Installation](#installation)
 - [Heroku Deploy](#heroku-deploy)
+- [Roadmap](#roadmap)
+- [How to Contribute](#contribute)
 - [About](#about)
+- [License](#license)
 
 <a name="installation"></a>
 # Installation
@@ -88,11 +93,13 @@ Configure the schedular addon in your Heroku dashboard to run `python app.py` at
 
 Test by running `heroku run worker`
 
-## Roadmap
+<a name="roadmap"></a>
+# Roadmap
 
 If you are interested in the future direction of this project, please take a look at our [milestones](https://github.com/sendgrid/open-source-library-data-collector/milestones). We would love to hear your feedback.
 
-## How to Contribute
+<a name="contribute"></a>
+# How to Contribute
 
 We encourage contribution to our projects, please see our [CONTRIBUTING](https://github.com/sendgrid/open-source-library-data-collector/blob/master/CONTRIBUTING.md) guide for details.
 
@@ -110,4 +117,6 @@ open-source-library-data-collector is guided and supported by the SendGrid [Deve
 
 open-source-library-data-collector is maintained and funded by SendGrid, Inc. The names and logos for open-source-library-data-collector are trademarks of SendGrid, Inc.
 
-![SendGrid Logo](https://uiux.s3.amazonaws.com/2016-logos/email-logo%402x.png)
+<a name="license"></a>
+# License
+[The MIT License (MIT)](LICENSE.txt)
