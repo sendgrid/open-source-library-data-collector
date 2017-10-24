@@ -1,4 +1,10 @@
+![SendGrid Logo](https://uiux.s3.amazonaws.com/2016-logos/email-logo%402x.png)
 [![Travis Badge](https://travis-ci.org/sendgrid/open-source-library-data-collector.svg?branch=master)](https://travis-ci.org/sendgrid/open-source-library-data-collector)
+[![BuildStatus](https://travis-ci.org/sendgrid/open-source-library-data-collector.svg?branch=master)](https://travis-ci.org/sendgrid/open-source-library-data-collector)
+[![Email Notifications Badge](https://dx.sendgrid.com/badge/python)](https://dx.sendgrid.com/newsletter/python)
+[![Twitter Follow](https://img.shields.io/twitter/follow/sendgrid.svg?style=social&label=Follow)](https://twitter.com/sendgrid)
+[![GitHub contributors](https://img.shields.io/github/contributors/sendgrid/open-source-library-data-collector.svg)](https://github.com/sendgrid/open-source-library-data-collector/graphs/contributors)
+[![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE.txt)
 
 **Quickly and easily store data about your open source projects on GitHub and various Package Managers.**
 
@@ -10,6 +16,7 @@ All updates to this project are documented in our [CHANGELOG](https://github.com
 - [Installation](#installation)
 - [Heroku Deploy](#heroku-deploy)
 - [About](#about)
+- [License](#license)
 
 <a name="installation"></a>
 # Installation
@@ -110,4 +117,5 @@ open-source-library-data-collector is guided and supported by the SendGrid [Deve
 
 open-source-library-data-collector is maintained and funded by SendGrid, Inc. The names and logos for open-source-library-data-collector are trademarks of SendGrid, Inc.
 
-![SendGrid Logo](https://uiux.s3.amazonaws.com/2016-logos/email-logo%402x.png)
+# License
+[The MIT License (MIT)](LICENSE.txt)
