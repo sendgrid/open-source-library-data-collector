@@ -94,7 +94,7 @@ heroku config:add GITHUB_TOKEN=<<your_github_token>>
 heroku config:add SENDGRID_API_KEY=<<your_sendgrid_api_key>>
 heroku addons:create scheduler:standard
 ```
-Configure the schedular addon in your Heroku dashboard to run `python app.py` at your desired frequency.
+Configure the scheduler add-on in your Heroku dashboard to run `python app.py` at your desired frequency.
 
 Test by running `heroku run worker`
 
