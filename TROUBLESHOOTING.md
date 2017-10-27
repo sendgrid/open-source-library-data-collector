@@ -11,6 +11,20 @@ If you can't find a solution below, please open an [issue](https://github.com/se
 <a name="environment"></a>
 ## Environment Variables and Your SendGrid API Key
 
+### Initial Setup
+
+* copy the .env_sample file to .env
+```bash
+cp .env_sample .env
+```
+
+* open and add the params into this file (.env)
+
+* then source the file
+```bash
+source ./.env
+```
+
 All of our examples assume you are using [environment variables](https://github.com/sendgrid/sendgrid-python#setup-environment-variables) to hold your SendGrid API key.
 
 If you choose to add your SendGrid API key directly (not recommended):
