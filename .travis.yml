@@ -2,14 +2,17 @@ language: python
 sudo: false
 cache: pip
 python:
+- '2.7'
 - '3.2'
 - '3.3'
 - '3.4'
 - '3.5'
 install:
 - pip install -r requirements.txt
+- pip install codecov
 script:
 - python -m unittest discover
+- coverage run tests.py
 notifications:
   hipchat:
     rooms:
@@ -20,3 +23,5 @@ notifications:
       <a href="https://github.com/%{repository}/commits/%{commit}">View on GitHub</a>'
     format: html
     notify: false
+after_success:
+- codecov
