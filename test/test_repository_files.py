@@ -17,7 +17,7 @@ class TestRepositoryFiles(unittest.TestCase):
             ['./CHANGELOG.md'],
             ['./CODE_OF_CONDUCT.md'],
             ['./CONTRIBUTING.md'],
-            ['./LICENSE.md'],
+            ['./LICENSE.md', './LICENSE.txt'],
             ['./README.md'],
             ['./TROUBLESHOOTING.md'],
             ['./USAGE.md'],
