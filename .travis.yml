@@ -12,7 +12,7 @@ install:
 - pip install codecov
 script:
 - python -m unittest discover
-- coverage run tests.py
+- coverage run --source=test
 notifications:
   hipchat:
     rooms:
