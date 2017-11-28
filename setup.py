@@ -1,10 +1,12 @@
 import os
 import sys
+
 from setuptools import setup, find_packages
 
 long_description = 'Please see our GitHub README'
 if os.path.exists('README.txt'):
     long_description = open('README.txt').read()
+
 
 def getRequires():
     deps = ['github3.py',
@@ -27,6 +29,7 @@ def getRequires():
     elif (3, 3) <= sys.version_info < (3, 6):
         deps.append('pymysql')
     return deps
+
 
 base_url = 'https://github.com/sendgrid/'
 setup(
@@ -52,5 +55,8 @@ setup(
         'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5'
-    ]
+    ],
+    entry_points={
+        'console_scripts': ['osscollect=cli:cli'],
+    },
 )
