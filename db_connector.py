@@ -3,33 +3,42 @@ try:
     import urlparse
 except ImportError:
     import urllib.parse as urlparse
+
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
+
 from config import Config
 
-if (os.environ.get('ENV') != 'prod'):  # We are not in Heroku
-    Config.init_environment()
-    mysql_db = os.environ.get('MYSQL_DB')
-    mysql_host = os.environ.get('MYSQL_HOST')
-    mysql_username = os.environ.get('MYSQL_USERNAME')
-    mysql_password = os.environ.get('MYSQL_PASSWORD')
-    mysql_port = os.environ.get('MYSQL_PORT')
-else:  # We are in Heroku
-    url = urlparse.urlparse(os.environ['CLEARDB_DATABASE_URL'])
-    mysql_db = url.path[1:]
-    mysql_host = url.hostname
-    mysql_username = url.username
-    mysql_password = url.password
-    mysql_port = '3306'
 
-connect_string = 'mysql+pymysql://' \
-                    + mysql_username + ':' \
-                    + mysql_password + '@' \
-                    + mysql_host + ':' \
-                    + mysql_port + '/' \
-                    + mysql_db
-engine = create_engine(connect_string)
+def get_db_connection_string(db_url):
+    parsed = urlparse.urlparse(db_url)
+    if parsed.scheme == 'mysql':
+        parts = (parsed.scheme + '+pymysql',) + parsed[1:]
+    elif parsed.scheme == 'sqlite':
+        return db_url
+    else:
+        parts = parsed
+
+    return urlparse.urlunparse(parts)
+
+
+def get_engine():
+    if os.environ.get('ENV') != 'prod':  # We are not in Heroku
+        Config.init_environment()
+        db_url = os.environ.get('MYSQL_DB_URL',
+                                os.environ.get('SQLLITE_DB_URL', ''))
+    else:
+        db_url = os.environ['CLEARDB_DATABASE_URL']
+
+    if not db_url:
+        raise RuntimeError('missing database environment configuration')
+
+    db_connection_string = get_db_connection_string(db_url)
+    return create_engine(db_connection_string)
+
+
+engine = get_engine()
 Base = declarative_base(engine)
 
 
