@@ -10,21 +10,29 @@ github = GitHub()
 pm = PackageManagers()
 sg = SendGrid()
 
-# Update the DB with the GitHub repo data
-for repo in config.github_repos:
-    github.update_library_data(config.github_user, repo)
+def update(send_email=True):
+    # Update the DB with the GitHub repo data
+    for repo in config.github_repos:
+        github.update_library_data(config.github_user, repo)
 
-# Update the DB with Package Manager data
-pm.update_package_manager_data(config.package_manager_urls)
+    # Update the DB with Package Manager data
+    pm.update_package_manager_data(config.package_manager_urls)
 
-# Export tables as CSV if config file indicates to do so
-if config.export_github:
-    db.export_table_to_csv(GitHubData)
-if config['export_tables']['PackageManagers']:
-    db.export_table_to_csv(PackageManagerData)
+    # Export tables as CSV if config file indicates to do so
+    if config.export_github:
+        db.export_table_to_csv(GitHubData)
+    if config['export_tables']['PackageManagers']:
+        db.export_table_to_csv(PackageManagerData)
+    
+    if not send_email:
+        return
 
-# Send an email update
-sg.send_email(config.to_email,
-              config.from_email,
-              config.email_subject,
-              config.email_body)
+    # Send an email update
+    sg.send_email(config.to_email,
+                  config.from_email,
+                  config.email_subject,
+                  config.email_body)
+
+
+if __name__ == "__main__":
+    update()
