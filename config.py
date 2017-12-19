@@ -20,6 +20,9 @@ class Config(object):
             self._from_email = config['email']['from']
             self._email_subject = config['email']['subject']
             self._email_body = config['email']['body']
+            self._export_github = config['export_tables']['Github']
+            self._export_package_managers = \
+                config['export_tables']['PackageManagers']
 
     @staticmethod
     def init_environment():
@@ -59,3 +62,11 @@ class Config(object):
     @property
     def email_body(self):
         return self._email_body
+
+    @property
+    def export_github(self):
+        return self._export_github
+
+    @property
+    def export_package_managers(self):
+        return self._export_package_managers

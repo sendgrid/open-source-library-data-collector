@@ -31,7 +31,10 @@ First, get your free SendGrid account [here](https://sendgrid.com/free?source=op
 Next, update your environment with your [SENDGRID_API_KEY](https://app.sendgrid.com/settings/api_keys).
 
 ## Initial Setup
+
 [Library Usage Documentation](USAGE.md)
+
+If you enabled CSV exports in your `config.yml`, those files will appear under the `csv/` directory in the project repository.
 
 ## Dependencies
 
