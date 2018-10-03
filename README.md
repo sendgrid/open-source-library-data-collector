@@ -81,9 +81,6 @@ Quick links:
 - [Improvements to the Codebase](https://github.com/sendgrid/open-source-library-data-collector/blob/master/CONTRIBUTING.md#improvements_to_the_codebase)
 - [License](#license)
 
-# License
-[The MIT License (MIT)](LICENSE.txt)
-
 <a name="about"></a>
 # About
 
@@ -93,4 +90,5 @@ open-source-library-data-collector is maintained and funded by SendGrid, Inc. Th
 
 <a name="license"></a>
 # License
+
 [The MIT License (MIT)](LICENSE.txt)
