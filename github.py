@@ -7,10 +7,8 @@ from db_connector import DBConnector, GitHubData
 class GitHub(object):
     """Collect time stamped repository data from GitHub and store in a DB"""
     def __init__(self):
-        if (os.environ.get('ENV') != 'prod'):  # We are not in Heroku
-            github_token = os.environ.get('GITHUB_TOKEN')
-        else:
-            github_token = os.environ['GITHUB_TOKEN']
+        # Check if we are not in heroku
+        github_token = os.environ.get('GITHUB_TOKEN') if os.environ.get('ENV') != 'prod' else os.environ['GITHUB_TOKEN']
         self.github = github3.login(token=github_token)
         self.db = DBConnector()
 

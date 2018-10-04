@@ -7,10 +7,8 @@ from bs4 import BeautifulSoup
 class SendGrid(object):
     """Send an email through SendGrid"""
     def __init__(self):
-        if os.environ.get('ENV') != 'prod':  # We are not in Heroku
-            sendgrid_api_key = os.environ.get('SENDGRID_API_KEY')
-        else:
-            sendgrid_api_key = os.environ['SENDGRID_API_KEY']
+        # Check if we are not in heroku
+        sendgrid_api_key = os.environ.get('SENDGRID_APY_KEY') if os.environ.get('ENV') != 'prod' else os.environ['SENDGRID_API_KEY']
         self.sendgrid = sendgrid.SendGridAPIClient(apikey=sendgrid_api_key)
 
     def send_email(self, to_email, from_email, subject, body):
