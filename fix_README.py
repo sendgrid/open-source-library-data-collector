@@ -1,5 +1,4 @@
 import pandoc
-import os
 
 pandoc.core.PANDOC_PATH = '/usr/local/bin/pandoc'
 

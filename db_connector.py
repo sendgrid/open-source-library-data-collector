@@ -119,7 +119,7 @@ class DBConnector(object):
             self.session.commit()
             return True
         elif table == 'package_manager_data':
-            res = self.session.query(PackageManagerData) \
+            self.session.query(PackageManagerData) \
                 .filter(PackageManagerData.id == id).delete()
             self.session.commit()
             return True
