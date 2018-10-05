@@ -190,7 +190,7 @@ Generally, we follow the style guidelines as suggested by the official language.
 Please run your code through:
 
 - [pyflakes](https://pypi.python.org/pypi/pyflakes)
-- [pep8](https://pypi.python.org/pypi/pep8)
+- [pycodestyle](https://pypi.python.org/pypi/pycodestyle)
 
 ## Creating a Pull Request<a name="creating-a-pull-request"></a>
 
