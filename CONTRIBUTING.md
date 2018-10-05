@@ -165,12 +165,11 @@ The above local "Initial setup" is complete
 Add eval "$(pyenv init -)" to your .profile after installing tox, you only need to do this once.
 
 ```bash
-pyenv install 3.2.6
 pyenv install 3.3.6
 pyenv install 3.4.3
 pyenv install 3.5.0
 python setup.py install
-pyenv local 3.5.0 3.4.3 3.3.6 3.2.6 2.7.8 2.6.9
+pyenv local 3.5.0 3.4.3 3.3.6 2.7.8 2.6.9
 pyenv rehash
 ```
 
