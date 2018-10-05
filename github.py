@@ -25,24 +25,21 @@ class GitHub(object):
         :rtype:   Data object
         """
         github_data = self.github.repository(repo_user, repo_name)
-        lib_data = {}
-        lib_data['num_pull_requests'] \
-            = sum(1 for i in github_data.iter_pulls())
-        lib_data['num_issues'] \
-            = sum(1 for i in github_data.iter_issues())
-        lib_data['num_commits'] \
-            = sum(1 for i in github_data.iter_commits())
-        lib_data['num_branches'] \
-            = sum(1 for i in github_data.iter_branches())
-        lib_data['num_releases'] \
-            = sum(1 for i in github_data.iter_releases())
-        lib_data['num_contributors'] \
-            = sum(1 for i in github_data.iter_contributors())
-        lib_data['num_watchers'] \
-            = sum(1 for i in github_data.iter_subscribers())
-        lib_data['num_stargazers'] \
-            = sum(1 for i in github_data.iter_stargazers())
-        lib_data['num_forks'] = github_data.forks_count
+        lib_data = {'num_pull_requests': sum(
+            1 for i in github_data.iter_pulls()),
+                    'num_issues': sum(1 for i in github_data.iter_issues()),
+                    'num_commits': sum(1 for i in github_data.iter_commits()),
+                    'num_branches': sum(
+                        1 for i in github_data.iter_branches()),
+                    'num_releases': sum(
+                        1 for i in github_data.iter_releases()),
+                    'num_contributors': sum(
+                        1 for i in github_data.iter_contributors()),
+                    'num_watchers': sum(
+                        1 for i in github_data.iter_subscribers()),
+                    'num_stargazers': sum(
+                        1 for i in github_data.iter_stargazers()),
+                    'num_forks': github_data.forks_count}
         github_data_import = GitHubData(
                         date_updated=datetime.datetime.now(),
                         language=repo_name,
