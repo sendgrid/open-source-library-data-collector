@@ -8,7 +8,8 @@ class GitHub(object):
     """Collect time stamped repository data from GitHub and store in a DB"""
     def __init__(self):
         # Check if we are not in heroku
-        github_token = os.environ.get('GITHUB_TOKEN') if os.environ.get('ENV') != 'prod' else os.environ['GITHUB_TOKEN']
+        github_token = os.environ.get('GITHUB_TOKEN') if \
+            os.environ.get('ENV') != 'prod' else os.environ['GITHUB_TOKEN']
         self.github = github3.login(token=github_token)
         self.db = DBConnector()
 

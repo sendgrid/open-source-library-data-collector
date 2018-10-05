@@ -10,6 +10,7 @@ github = GitHub()
 pm = PackageManagers()
 sg = SendGrid()
 
+
 def update(send_email=True):
     # Update the DB with the GitHub repo data
     for repo in config.github_repos:
@@ -23,7 +24,7 @@ def update(send_email=True):
         db.export_table_to_csv(GitHubData)
     if config['export_tables']['PackageManagers']:
         db.export_table_to_csv(PackageManagerData)
-    
+
     if not send_email:
         return
 

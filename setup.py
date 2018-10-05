@@ -40,7 +40,8 @@ setup(
     url=base_url + 'open-source-library-data-collector',
     packages=find_packages(),
     license='MIT',
-    description='Periodically capture external data relating to GitHub hosted Open Source libraries',
+    description='Periodically capture external data relating to GitHub hosted '
+                'Open Source libraries',
     long_description=long_description,
     install_requires=getRequires(),
     keywords=[

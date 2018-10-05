@@ -44,7 +44,8 @@ class PackageManagers(object):
         for url in package_manager_urls:
             if 'https://www.nuget.org/packages/SendGrid' == url:
                 num_total_csharp_downloads = self.csharp_downloads(url)
-            if 'https://www.nuget.org/packages/SendGrid.CSharp.HTTP.Client' == url:
+            if 'https://www.nuget.org/packages/SendGrid.CSharp.HTTP.Client' \
+                    == url:
                 num_csharp_http_client_downloads = self.csharp_downloads(url)
             if 'https://www.npmjs.com/package/sendgrid' in url:
                 if 'https://www.npmjs.com/package/sendgrid-rest' != url:
@@ -53,30 +54,33 @@ class PackageManagers(object):
                 num_node_http_client_downloads = self.nodejs_downloads(url)
             if 'https://packagist.org/packages/sendgrid/sendgrid' == url:
                 num_php_downloads = self.php_downloads(url)
-            if 'https://packagist.org/packages/sendgrid/php-http-client' == url:
+            if 'https://packagist.org/packages/sendgrid/php-http-client' == \
+                    url:
                 num_php_http_client_downloads = self.php_downloads(url)
             if 'pypi' in url and 'sendgrid' in url:
                 num_python_downloads = self.python_downloads(url)
             if 'pypi' in url and 'python_http_client' in url:
                 num_python_http_client_downloads = self.python_downloads(url)
             if 'pypi' in url and 'open_source_library_data_collector' in url:
-                num_python_open_source_library_data_collector_downloads = self.python_downloads(url)
+                num_python_open_source_library_data_collector_downloads = \
+                    self.python_downloads(url)
             if 'rubygems' in url and 'sendgrid' in url:
                 num_ruby_downloads = self.ruby_downloads(url)
             if 'rubygems' in url and 'http' in url:
                 num_ruby_http_client_downloads = self.ruby_downloads(url)
 
-        return self.update_db(num_total_csharp_downloads,
-                              num_nodejs_monthly_downloads,
-                              num_php_downloads,
-                              num_python_downloads,
-                              num_ruby_downloads,
-                              num_python_http_client_downloads,
-                              num_python_open_source_library_data_collector_downloads,
-                              num_ruby_http_client_downloads,
-                              num_csharp_http_client_downloads,
-                              num_php_http_client_downloads,
-                              num_node_http_client_downloads)
+        return self.update_db(
+            num_total_csharp_downloads,
+            num_nodejs_monthly_downloads,
+            num_php_downloads,
+            num_python_downloads,
+            num_ruby_downloads,
+            num_python_http_client_downloads,
+            num_python_open_source_library_data_collector_downloads,
+            num_ruby_http_client_downloads,
+            num_csharp_http_client_downloads,
+            num_php_http_client_downloads,
+            num_node_http_client_downloads)
 
     def csharp_downloads(self, url):
         """Gets library download data from nuget.org
@@ -93,7 +97,8 @@ class PackageManagers(object):
         lines = soup.find(text=pattern).__dict__['parent']
         num_total_csharp_downloads = str(lines)[:-39]
         num_total_csharp_downloads = num_total_csharp_downloads[-9:]
-        num_total_csharp_downloads = num_total_csharp_downloads.replace(',', '')
+        num_total_csharp_downloads = \
+            num_total_csharp_downloads.replace(',', '')
         return num_total_csharp_downloads
 
     def nodejs_downloads(self, url):
