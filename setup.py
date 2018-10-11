@@ -24,9 +24,7 @@ def getRequires():
             'uritemplate.py',
             'pytz',
             'python-http-client']
-    if (3, 0) <= sys.version_info < (3, 2):
-        deps.append('pymysql3')
-    elif (3, 3) <= sys.version_info < (3, 6):
+    if (3, 3) <= sys.version_info < (3, 6):
         deps.append('pymysql')
     return deps
 
@@ -40,7 +38,8 @@ setup(
     url=base_url + 'open-source-library-data-collector',
     packages=find_packages(),
     license='MIT',
-    description='Periodically capture external data relating to GitHub hosted Open Source libraries',
+    description='Periodically capture external data relating to GitHub hosted '
+                'Open Source libraries',
     long_description=long_description,
     install_requires=getRequires(),
     keywords=[
@@ -51,7 +50,6 @@ setup(
         'Package Managers'
     ],
     classifiers=[
-        'Programming Language :: Python :: 3.2',
         'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5'
