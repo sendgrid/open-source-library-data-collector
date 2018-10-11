@@ -4,6 +4,11 @@ import github3
 from db_connector import DBConnector, GitHubData
 
 
+def _iter_len(iterator):
+    """Return length of an iterator"""
+    return sum(1 for _ in iterator)
+
+
 class GitHub(object):
     """Collect time stamped repository data from GitHub and store in a DB"""
     def __init__(self):
@@ -25,24 +30,18 @@ class GitHub(object):
         :rtype:   Data object
         """
         github_data = self.github.repository(repo_user, repo_name)
-        lib_data = {}
-        lib_data['num_pull_requests'] \
-            = sum(1 for i in github_data.iter_pulls())
-        lib_data['num_issues'] \
-            = sum(1 for i in github_data.iter_issues())
-        lib_data['num_commits'] \
-            = sum(1 for i in github_data.iter_commits())
-        lib_data['num_branches'] \
-            = sum(1 for i in github_data.iter_branches())
-        lib_data['num_releases'] \
-            = sum(1 for i in github_data.iter_releases())
-        lib_data['num_contributors'] \
-            = sum(1 for i in github_data.iter_contributors())
-        lib_data['num_watchers'] \
-            = sum(1 for i in github_data.iter_subscribers())
-        lib_data['num_stargazers'] \
-            = sum(1 for i in github_data.iter_stargazers())
-        lib_data['num_forks'] = github_data.forks_count
+
+        lib_data = {'num_pull_requests': _iter_len(github_data.iter_pulls()),
+                    'num_issues': _iter_len(github_data.iter_issues()),
+                    'num_commits': _iter_len(github_data.iter_commits()),
+                    'num_branches': _iter_len(github_data.iter_branches()),
+                    'num_releases': _iter_len(github_data.iter_releases()),
+                    'num_contributors': _iter_len(
+                        github_data.iter_contributors()),
+                    'num_watchers': _iter_len(github_data.iter_subscribers()),
+                    'num_stargazers': _iter_len(github_data.iter_stargazers()),
+                    'num_forks': github_data.forks_count}
+
         github_data_import = GitHubData(
                         date_updated=datetime.datetime.now(),
                         language=repo_name,
