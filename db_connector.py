@@ -15,7 +15,7 @@ from utils import write_records_to_csv
 def get_db_connection_string(db_url):
     parsed = urlparse.urlparse(db_url)
     if parsed.scheme == 'mysql':
-        parts = (parsed.scheme + '+pymysql',) + parsed[1:]
+        parts = ('{}+pymysql'.format(parsed.scheme),) + parsed[1:]
     elif parsed.scheme == 'sqlite':
         return db_url
     else:

@@ -35,7 +35,7 @@ setup(
     version='1.1.0',
     author='Elmer Thomas',
     author_email='dx@sendgrid.com',
-    url=base_url + 'open-source-library-data-collector',
+    url='{}open-source-library-data-collector'.format(base_url),
     packages=find_packages(),
     license='MIT',
     description='Periodically capture external data relating to GitHub hosted '
