@@ -8,7 +8,7 @@ python-dateutil==2.6.0
 python-http-client==2.2.1
 pytz==2016.7
 PyYAML==3.12
-requests==2.12.1
+requests==2.20.0
 sendgrid==3.6.3
 six==1.10.0
 SQLAlchemy==1.1.4
