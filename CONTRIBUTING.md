@@ -93,7 +93,7 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-## Environment Variables
+### Environment Variables
 
 First, get your free SendGrid account [here](https://sendgrid.com/free?source=open-source-library-data-collector).
 
